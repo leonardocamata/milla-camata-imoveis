@@ -16,6 +16,7 @@
     --pale:#F3F6F7;
     --stone:#5B6B72;
     --line:#DFE6E8;
+    --moss:#4B6B4A;
     --max:1180px;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
@@ -236,6 +237,9 @@
   /* TURISMO */
   .turismo{background:var(--white);}
   .turismo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .turismo-subhead{margin-top:52px;margin-bottom:24px;padding-top:32px;border-top:1px solid var(--line);}
+  .turismo-subhead h3{font-size:22px;font-weight:800;margin-bottom:8px;}
+  .turismo-subhead p{font-size:14px;color:var(--stone);}
   .turismo-card{border:1px solid var(--line);display:flex;flex-direction:column;}
   .turismo-top{
     aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;
@@ -250,20 +254,6 @@
   .turismo-ig:hover{color:var(--teal);}
   .turismo-note{font-size:13px;color:var(--stone);margin-top:32px;border-top:1px solid var(--line);padding-top:20px;}
   .turismo-note a{color:var(--teal);font-weight:600;}
-
-  /* DIRETÓRIO TRIPADVISOR */
-  .ta-directory{margin-top:48px;}
-  .ta-directory-head{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:10px;margin-bottom:16px;}
-  .ta-directory-head h3{font-size:18px;font-weight:800;}
-  .ta-directory-head p{font-size:12.5px;color:var(--stone);}
-  .ta-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
-  .ta-item{background:var(--white);padding:11px 14px;display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:12.5px;color:var(--ink);}
-  .ta-item:hover{background:var(--pale);color:var(--teal-dark);}
-  .ta-item .ta-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
-  .ta-item .ta-rating{font-size:11px;font-weight:700;color:var(--teal);white-space:nowrap;flex-shrink:0;}
-  .ta-item .ta-rating.new{color:var(--stone);font-weight:500;}
-  @media(max-width:900px){.ta-grid{grid-template-columns:repeat(2,1fr);}}
-  @media(max-width:600px){.ta-grid{grid-template-columns:1fr;}}
   @media(max-width:980px){.turismo-grid{grid-template-columns:1fr 1fr;} .region-grid{grid-template-columns:1fr;}}
   @media(max-width:700px){.turismo-grid{grid-template-columns:1fr;}}
 </style>
@@ -516,83 +506,252 @@
 
     </div>
 
-    <p class="turismo-note" data-reveal>Seleção baseada em pesquisa pública e em perfis que documentam o dia a dia da região, como <a target="_blank" rel="noopener" href="https://www.instagram.com/viajando_por_santateresa/">@viajando_por_santateresa</a>, que compartilha roteiros e curadoria sobre gastronomia e turismo em Santa Teresa.</p>
+    <div class="turismo-subhead" data-reveal>
+      <h3>Onde comer e beber em Santa Teresa</h3>
+      <p>Seleção da Milla dos endereços que valem a visita no centro e no Circuito Caravaggio — foto de cada local em breve.</p>
+    </div>
 
-    <div class="ta-directory" data-reveal>
-      <div class="ta-directory-head">
-        <h3>Todos os restaurantes de Santa Teresa no TripAdvisor</h3>
-        <p>67 estabelecimentos · clique para ver fotos, avaliações e endereço completo</p>
+    <div class="turismo-grid">
+      <div class="turismo-card" data-reveal>
+        <div class="turismo-top" style="background:linear-gradient(160deg,#5b7c54,var(--ink));"><span class="emoji">🌿</span></div>
+        <div class="turismo-body">
+          <div class="turismo-cat">Italiana</div>
+          <div class="turismo-title">Giardino</div>
+          <p class="turismo-desc">Um dos restaurantes mais celebrados da cidade, com risotos e massas num salão charmoso em frente à Praça Augusto Ruschi.</p>
+        </div>
       </div>
-      <div class="ta-grid">
-      <a class="ta-item" target="_blank" rel="noopener" href="https://www.tripadvisor.com.br/Restaurant_Review-g2352114-d10351195-Reviews-Giardino-Santa_Teresa_State_of_Espirito_Santo.html"><span class="ta-name">Giardino</span><span class="ta-rating">★ 4,8</span></a>
-      <a class="ta-item" target="_blank" rel="noopener" href="https://www.tripadvisor.com.br/Restaurant_Review-g2352114-d13553965-Reviews-Gioconda_Cantina_Italiana-Santa_Teresa_State_of_Espirito_Santo.html"><span class="ta-name">Gioconda Cantina Italiana</span><span class="ta-rating">★ 4,9</span></a>
-      <a class="ta-item" target="_blank" rel="noopener" href="https://www.tripadvisor.com.br/Restaurant_Review-g2352114-d20233509-Reviews-Cervejaria_Tres_Santas-Santa_Teresa_State_of_Espirito_Santo.html"><span class="ta-name">Cervejaria Três Santas</span><span class="ta-rating">★ 4,2</span></a>
-      <a class="ta-item" target="_blank" rel="noopener" href="https://www.tripadvisor.com.br/Restaurant_Review-g2352114-d14169133-Reviews-Tia_Manuela_Restaurante_Portugues-Santa_Teresa_State_of_Espirito_Santo.html"><span class="ta-name">Tia Manuela Restaurante Português</span><span class="ta-rating">★ 4,9</span></a>
-      <a class="ta-item" target="_blank" rel="noopener" href="https://www.tripadvisor.com.br/Restaurant_Review-g2352114-d7319710-Reviews-Claid_s_Biscoitos-Santa_Teresa_State_of_Espirito_Santo.html"><span class="ta-name">Claid's Biscoitos</span><span class="ta-rating">★ 4,5</span></a>
-      <a class="ta-item" target="_blank" rel="noopener" href="https://www.tripadvisor.com.br/Restaurant_Review-g2352114-d3260809-Reviews-Restaurante_Cafe_Haus-Santa_Teresa_State_of_Espirito_Santo.html"><span class="ta-name">Restaurante Cafe Haus</span><span class="ta-rating">★ 4,6</span></a>
-      <a class="ta-item" target="_blank" rel="noopener" href="https://www.tripadvisor.com.br/Restaurant_Review-g2352114-d8152864-Reviews-Romanha-Santa_Teresa_State_of_Espirito_Santo.html"><span class="ta-name">Romanha</span><span class="ta-rating">★ 4,2</span></a>
-      <a class="ta-item" target="_blank" rel="noopener" href="https://www.tripadvisor.com.br/Restaurant_Review-g2352114-d5359541-Reviews-La_Taverneta_Restaurante_e_Pizzaria-Santa_Teresa_State_of_Espirito_Santo.html"><span class="ta-name">La Taverneta Restaurante e Pizzaria</span><span class="ta-rating">★ 4,2</span></a>
-      <a class="ta-item" target="_blank" rel="noopener" href="https://www.tripadvisor.com.br/Restaurant_Review-g2352114-d5710009-Reviews-Fabricio_Bar_Restaurante-Santa_Teresa_State_of_Espirito_Santo.html"><span class="ta-name">Fabricio Bar + Restaurante</span><span class="ta-rating">★ 4,3</span></a>
-      <a class="ta-item" target="_blank" rel="noopener" href="https://www.tripadvisor.com.br/Restaurant_Review-g2352114-d5387323-Reviews-Cantina_Italiana-Santa_Teresa_State_of_Espirito_Santo.html"><span class="ta-name">Cantina Italiana</span><span class="ta-rating">★ 4,3</span></a>
-      <a class="ta-item" target="_blank" rel="noopener" href="https://www.tripadvisor.com.br/Restaurant_Review-g2352114-d18337913-Reviews-Villagio_Zamprogno-Santa_Teresa_State_of_Espirito_Santo.html"><span class="ta-name">Villagio Zamprogno</span><span class="ta-rating">★ 4,1</span></a>
-      <a class="ta-item" target="_blank" rel="noopener" href="https://www.tripadvisor.com.br/Restaurant_Review-g2352114-d13982084-Reviews-Santa_Sfiha-Santa_Teresa_State_of_Espirito_Santo.html"><span class="ta-name">Santa Sfiha</span><span class="ta-rating">★ 4,9</span></a>
-      <a class="ta-item" target="_blank" rel="noopener" href="https://www.tripadvisor.com.br/Restaurant_Review-g2352114-d23648373-Reviews-Armazem_Caravaggio-Santa_Teresa_State_of_Espirito_Santo.html"><span class="ta-name">Armazém Caravaggio</span><span class="ta-rating">★ 4,1</span></a>
-      <a class="ta-item" target="_blank" rel="noopener" href="https://www.tripadvisor.com.br/Restaurant_Review-g2352114-d6996162-Reviews-Cappi_Restaurante-Santa_Teresa_State_of_Espirito_Santo.html"><span class="ta-name">Cappi Restaurante</span><span class="ta-rating">★ 4,2</span></a>
-      <a class="ta-item" target="_blank" rel="noopener" href="https://www.tripadvisor.com.br/Restaurant_Review-g2352114-d5683606-Reviews-Bar_Elite-Santa_Teresa_State_of_Espirito_Santo.html"><span class="ta-name">Bar Elite</span><span class="ta-rating">★ 4,4</span></a>
-      <a class="ta-item" target="_blank" rel="noopener" href="https://www.tripadvisor.com.br/Restaurant_Review-g2352114-d34161309-Reviews-Pasta_Fine_Tradizionale-Santa_Teresa_State_of_Espirito_Santo.html"><span class="ta-name">Pasta Fine Tradizionale</span><span class="ta-rating">★ 5,0</span></a>
-      <a class="ta-item" target="_blank" rel="noopener" href="https://www.tripadvisor.com.br/Restaurant_Review-g2352114-d6996159-Reviews-Restaurante_Manzo_Grill-Santa_Teresa_State_of_Espirito_Santo.html"><span class="ta-name">Restaurante Manzo Grill</span><span class="ta-rating">★ 4,1</span></a>
-      <a class="ta-item" target="_blank" rel="noopener" href="https://www.tripadvisor.com.br/Restaurant_Review-g2352114-d32879321-Reviews-San_Pietro_Vila_Parque-Santa_Teresa_State_of_Espirito_Santo.html"><span class="ta-name">San Pietro Vila Parque</span><span class="ta-rating">★ 2,8</span></a>
-      <a class="ta-item" target="_blank" rel="noopener" href="https://www.tripadvisor.com.br/Restaurant_Review-g2352114-d9837757-Reviews-Casa_dos_Espumantes-Santa_Teresa_State_of_Espirito_Santo.html"><span class="ta-name">Casa dos Espumantes</span><span class="ta-rating">★ 4,4</span></a>
-      <a class="ta-item" target="_blank" rel="noopener" href="https://www.tripadvisor.com.br/Restaurant_Review-g2352114-d3260805-Reviews-Restaurante_Mazzolin_Di_Fiori-Santa_Teresa_State_of_Espirito_Santo.html"><span class="ta-name">Restaurante Mazzolin Di Fiori</span><span class="ta-rating">★ 4,0</span></a>
-      <a class="ta-item" target="_blank" rel="noopener" href="https://www.tripadvisor.com.br/Restaurant_Review-g2352114-d10469379-Reviews-Osteria_Alla_Botte-Santa_Teresa_State_of_Espirito_Santo.html"><span class="ta-name">Osteria Alla Botte</span><span class="ta-rating">★ 3,9</span></a>
-      <a class="ta-item" target="_blank" rel="noopener" href="https://www.tripadvisor.com.br/Restaurant_Review-g2352114-d27136708-Reviews-UNIC_Bistro-Santa_Teresa_State_of_Espirito_Santo.html"><span class="ta-name">UNIC Bistrô</span><span class="ta-rating">★ 3,8</span></a>
-      <a class="ta-item" target="_blank" rel="noopener" href="https://www.tripadvisor.com.br/Restaurant_Review-g2352114-d23195613-Reviews-Restaurante_Sabor_Italiano-Santa_Teresa_State_of_Espirito_Santo.html"><span class="ta-name">Restaurante Sabor Italiano</span><span class="ta-rating">★ 4,1</span></a>
-      <a class="ta-item" target="_blank" rel="noopener" href="https://www.tripadvisor.com.br/Restaurant_Review-g2352114-d5737132-Reviews-Mistura_Fina-Santa_Teresa_State_of_Espirito_Santo.html"><span class="ta-name">Mistura Fina</span><span class="ta-rating">★ 4,0</span></a>
-      <a class="ta-item" target="_blank" rel="noopener" href="https://www.tripadvisor.com.br/Restaurant_Review-g2352114-d18716801-Reviews-Cervejaria_Teresense-Santa_Teresa_State_of_Espirito_Santo.html"><span class="ta-name">Cervejaria Teresense</span><span class="ta-rating">★ 3,4</span></a>
-      <a class="ta-item" target="_blank" rel="noopener" href="https://www.tripadvisor.com.br/Restaurant_Review-g2352114-d25341388-Reviews-Santa_Canela_Restaurante-Santa_Teresa_State_of_Espirito_Santo.html"><span class="ta-name">Santa Canela Restaurante</span><span class="ta-rating">★ 4,6</span></a>
-      <a class="ta-item" target="_blank" rel="noopener" href="https://www.tripadvisor.com.br/Restaurant_Review-g2352114-d4214264-Reviews-Dona_da_casa-Santa_Teresa_State_of_Espirito_Santo.html"><span class="ta-name">Dona da Casa</span><span class="ta-rating">★ 4,3</span></a>
-      <a class="ta-item" target="_blank" rel="noopener" href="https://www.tripadvisor.com.br/Restaurant_Review-g2352114-d22998881-Reviews-Casa_194-Santa_Teresa_State_of_Espirito_Santo.html"><span class="ta-name">Casa 194</span><span class="ta-rating">★ 4,3</span></a>
-      <a class="ta-item" target="_blank" rel="noopener" href="https://www.tripadvisor.com.br/Restaurant_Review-g2352114-d5641295-Reviews-Bar_Do_Leo-Santa_Teresa_State_of_Espirito_Santo.html"><span class="ta-name">Bar Do Leo</span><span class="ta-rating">★ 4,5</span></a>
-      <a class="ta-item" target="_blank" rel="noopener" href="https://www.tripadvisor.com.br/Restaurant_Review-g2352114-d12080057-Reviews-Don_Luigi-Santa_Teresa_State_of_Espirito_Santo.html"><span class="ta-name">Don Luigi</span><span class="ta-rating">★ 4,2</span></a>
-      <a class="ta-item" target="_blank" rel="noopener" href="https://www.tripadvisor.com.br/Restaurant_Review-g2352114-d20357025-Reviews-AMOR_in_CAKE_CONFEITARIA-Santa_Teresa_State_of_Espirito_Santo.html"><span class="ta-name">AMOR in CAKE CONFEITARIA</span><span class="ta-rating">★ 5,0</span></a>
-      <a class="ta-item" target="_blank" rel="noopener" href="https://www.tripadvisor.com.br/Restaurant_Review-g2352114-d13956217-Reviews-Cantina_da_Mamma_e_Mamma_s_Bar-Santa_Teresa_State_of_Espirito_Santo.html"><span class="ta-name">Cantina da Mamma e Mamma's Bar</span><span class="ta-rating">★ 4,4</span></a>
-      <a class="ta-item" target="_blank" rel="noopener" href="https://www.tripadvisor.com.br/Restaurant_Review-g2352114-d10638183-Reviews-Padaria_E_Confeitaria_Teresense-Santa_Teresa_State_of_Espirito_Santo.html"><span class="ta-name">Padaria E Confeitaria Teresense</span><span class="ta-rating">★ 4,0</span></a>
-      <a class="ta-item" target="_blank" rel="noopener" href="https://www.tripadvisor.com.br/Restaurant_Review-g2352114-d32988848-Reviews-San_Pietro_Vila_Parque-Santa_Teresa_State_of_Espirito_Santo.html"><span class="ta-name">San Pietro Vila Parque (Restaurante)</span><span class="ta-rating">★ 3,0</span></a>
-      <a class="ta-item" target="_blank" rel="noopener" href="https://www.tripadvisor.com.br/Restaurant_Review-g2352114-d33071876-Reviews-Lamp_Brewpub_Cervejaria-Santa_Teresa_State_of_Espirito_Santo.html"><span class="ta-name">Lamp Brewpub Cervejaria</span><span class="ta-rating">★ 5,0</span></a>
-      <a class="ta-item" target="_blank" rel="noopener" href="https://www.tripadvisor.com.br/Restaurant_Review-g2352114-d5644619-Reviews-Espaco_Alegria-Santa_Teresa_State_of_Espirito_Santo.html"><span class="ta-name">Espaço Alegria</span><span class="ta-rating">★ 4,0</span></a>
-      <a class="ta-item" target="_blank" rel="noopener" href="https://www.tripadvisor.com.br/Restaurant_Review-g2352114-d29904232-Reviews-La_Sophia_Ristorante-Santa_Teresa_State_of_Espirito_Santo.html"><span class="ta-name">La Sophia Ristorante</span><span class="ta-rating new">novo</span></a>
-      <a class="ta-item" target="_blank" rel="noopener" href="https://www.tripadvisor.com.br/Restaurant_Review-g2352114-d12616914-Reviews-Picanha_Cia-Santa_Teresa_State_of_Espirito_Santo.html"><span class="ta-name">Picanha & Cia</span><span class="ta-rating new">novo</span></a>
-      <a class="ta-item" target="_blank" rel="noopener" href="https://www.tripadvisor.com.br/Restaurant_Review-g2352114-d19273098-Reviews-Sta_Teresa_Rock_Bar_e_Restaurante-Santa_Teresa_State_of_Espirito_Santo.html"><span class="ta-name">Sta Teresa Rock Bar e Restaurante</span><span class="ta-rating new">novo</span></a>
-      <a class="ta-item" target="_blank" rel="noopener" href="https://www.tripadvisor.com.br/Restaurant_Review-g2352114-d8235459-Reviews-Alexandre_s_Bar-Santa_Teresa_State_of_Espirito_Santo.html"><span class="ta-name">Alexandre's Bar</span><span class="ta-rating">★ 5,0</span></a>
-      <a class="ta-item" target="_blank" rel="noopener" href="https://www.tripadvisor.com.br/Restaurant_Review-g2352114-d5686964-Reviews-Bar_Sao_Cristovao-Santa_Teresa_State_of_Espirito_Santo.html"><span class="ta-name">Bar São Cristóvão</span><span class="ta-rating">★ 3,5</span></a>
-      <a class="ta-item" target="_blank" rel="noopener" href="https://www.tripadvisor.com.br/Restaurant_Review-g2352114-d5669037-Reviews-Adrianos_Bar-Santa_Teresa_State_of_Espirito_Santo.html"><span class="ta-name">Adrianos Bar</span><span class="ta-rating">★ 4,0</span></a>
-      <a class="ta-item" target="_blank" rel="noopener" href="https://www.tripadvisor.com.br/Restaurant_Review-g2352114-d4531307-Reviews-Venturini_Laurindo-Santa_Teresa_State_of_Espirito_Santo.html"><span class="ta-name">Venturini, Laurindo</span><span class="ta-rating">★ 4,0</span></a>
-      <a class="ta-item" target="_blank" rel="noopener" href="https://www.tripadvisor.com.br/Restaurant_Review-g2352114-d5695703-Reviews-Caldo_De_Cana_Colibri-Santa_Teresa_State_of_Espirito_Santo.html"><span class="ta-name">Caldo De Cana Colibri</span><span class="ta-rating">★ 4,3</span></a>
-      <a class="ta-item" target="_blank" rel="noopener" href="https://www.tripadvisor.com.br/Restaurant_Review-g2352114-d5390191-Reviews-Oliveira_Grill-Santa_Teresa_State_of_Espirito_Santo.html"><span class="ta-name">Oliveira Grill</span><span class="ta-rating">★ 4,0</span></a>
-      <a class="ta-item" target="_blank" rel="noopener" href="https://www.tripadvisor.com.br/Restaurant_Review-g2352114-d5352153-Reviews-Restaurante_Pousada_Pasargada-Santa_Teresa_State_of_Espirito_Santo.html"><span class="ta-name">Restaurante Pousada Pasargada</span><span class="ta-rating">★ 4,0</span></a>
-      <a class="ta-item" target="_blank" rel="noopener" href="https://www.tripadvisor.com.br/Restaurant_Review-g2352114-d8234110-Reviews-Comida_Caseira_Da_Nani-Santa_Teresa_State_of_Espirito_Santo.html"><span class="ta-name">Comida Caseira Da Nani</span><span class="ta-rating">★ 3,0</span></a>
-      <a class="ta-item" target="_blank" rel="noopener" href="https://www.tripadvisor.com.br/Restaurant_Review-g2352114-d25347123-Reviews-Tarot_Rooftop-Santa_Teresa_State_of_Espirito_Santo.html"><span class="ta-name">Tarot Rooftop</span><span class="ta-rating new">novo</span></a>
-      <a class="ta-item" target="_blank" rel="noopener" href="https://www.tripadvisor.com.br/Restaurant_Review-g2352114-d25005354-Reviews-Piazza_Giardino-Santa_Teresa_State_of_Espirito_Santo.html"><span class="ta-name">Piazza Giardino</span><span class="ta-rating new">novo</span></a>
-      <a class="ta-item" target="_blank" rel="noopener" href="https://www.tripadvisor.com.br/Restaurant_Review-g2352114-d34253498-Reviews-Vino_Santa_Teresa-Santa_Teresa_State_of_Espirito_Santo.html"><span class="ta-name">Vino Santa Teresa</span><span class="ta-rating new">novo</span></a>
-      <a class="ta-item" target="_blank" rel="noopener" href="https://www.tripadvisor.com.br/Restaurant_Review-g2352114-d18276658-Reviews-Casa_Dei_Liquori-Santa_Teresa_State_of_Espirito_Santo.html"><span class="ta-name">Casa Dei Liquori</span><span class="ta-rating new">novo</span></a>
-      <a class="ta-item" target="_blank" rel="noopener" href="https://www.tripadvisor.com.br/Restaurant_Review-g2352114-d16663229-Reviews-Rede_Fast_Pizza-Santa_Teresa_State_of_Espirito_Santo.html"><span class="ta-name">Rede Fast Pizza</span><span class="ta-rating new">novo</span></a>
-      <a class="ta-item" target="_blank" rel="noopener" href="https://www.tripadvisor.com.br/Restaurant_Review-g2352114-d34230358-Reviews-Vino_Vinhos_Restaurante_e_Adega-Santa_Teresa_State_of_Espirito_Santo.html"><span class="ta-name">Vino Vinhos Restaurante e Adega</span><span class="ta-rating new">novo</span></a>
-      <a class="ta-item" target="_blank" rel="noopener" href="https://www.tripadvisor.com.br/Restaurant_Review-g2352114-d34162857-Reviews-Pizzaria_Pasta_Fine_Tradizione-Santa_Teresa_State_of_Espirito_Santo.html"><span class="ta-name">Pizzaria Pasta Fine Tradizione</span><span class="ta-rating new">novo</span></a>
-      <a class="ta-item" target="_blank" rel="noopener" href="https://www.tripadvisor.com.br/Restaurant_Review-g2352114-d34161241-Reviews-Pizzaria_Pasta_Fine_Tradizionale-Santa_Teresa_State_of_Espirito_Santo.html"><span class="ta-name">Pizzaria Pasta Fine Tradizionale</span><span class="ta-rating new">novo</span></a>
-      <a class="ta-item" target="_blank" rel="noopener" href="https://www.tripadvisor.com.br/Restaurant_Review-g2352114-d27895165-Reviews-Vinicola_E_Restaurante_Tomazelli-Santa_Teresa_State_of_Espirito_Santo.html"><span class="ta-name">Vinícola E Restaurante Tomazelli</span><span class="ta-rating new">novo</span></a>
-      <a class="ta-item" target="_blank" rel="noopener" href="https://www.tripadvisor.com.br/Restaurant_Review-g2352114-d17794720-Reviews-Di_Maria_Restaurante_e_Petiscaria-Santa_Teresa_State_of_Espirito_Santo.html"><span class="ta-name">Di Maria - Restaurante e Petiscaria</span><span class="ta-rating new">novo</span></a>
-      <a class="ta-item" target="_blank" rel="noopener" href="https://www.tripadvisor.com.br/Restaurant_Review-g2352114-d27347117-Reviews-Lf_Restaurante-Santa_Teresa_State_of_Espirito_Santo.html"><span class="ta-name">Lf Restaurante</span><span class="ta-rating new">novo</span></a>
-      <a class="ta-item" target="_blank" rel="noopener" href="https://www.tripadvisor.com.br/Restaurant_Review-g2352114-d33669129-Reviews-Pollo_Fritto-Santa_Teresa_State_of_Espirito_Santo.html"><span class="ta-name">Pollo Fritto</span><span class="ta-rating new">novo</span></a>
-      <a class="ta-item" target="_blank" rel="noopener" href="https://www.tripadvisor.com.br/Restaurant_Review-g2352114-d32877349-Reviews-San_Pietro_Cafe_Cerveja_E_Jardim-Santa_Teresa_State_of_Espirito_Santo.html"><span class="ta-name">San Pietro Café Cerveja E Jardim</span><span class="ta-rating new">novo</span></a>
-      <a class="ta-item" target="_blank" rel="noopener" href="https://www.tripadvisor.com.br/Restaurant_Review-g2352114-d27730862-Reviews-Canaa_Drinks_Restaurante-Santa_Teresa_State_of_Espirito_Santo.html"><span class="ta-name">Canaã Drinks Restaurante</span><span class="ta-rating new">novo</span></a>
-      <a class="ta-item" target="_blank" rel="noopener" href="https://www.tripadvisor.com.br/Restaurant_Review-g2352114-d27192498-Reviews-Santo_Japa_ST-Santa_Teresa_State_of_Espirito_Santo.html"><span class="ta-name">Santo Japa ST</span><span class="ta-rating new">novo</span></a>
-      <a class="ta-item" target="_blank" rel="noopener" href="https://www.tripadvisor.com.br/Restaurant_Review-g2352114-d27192478-Reviews-Bar_25_de_Julho-Santa_Teresa_State_of_Espirito_Santo.html"><span class="ta-name">Bar 25 de Julho</span><span class="ta-rating new">novo</span></a>
-      <a class="ta-item" target="_blank" rel="noopener" href="https://www.tripadvisor.com.br/Restaurant_Review-g2352114-d8234669-Reviews-Anabar-Santa_Teresa_State_of_Espirito_Santo.html"><span class="ta-name">Anabar</span><span class="ta-rating new">novo</span></a>
-      <a class="ta-item" target="_blank" rel="noopener" href="https://www.tripadvisor.com.br/Restaurant_Review-g2352114-d8164449-Reviews-Kaju_Lanchonete-Santa_Teresa_State_of_Espirito_Santo.html"><span class="ta-name">Kaju Lanchonete</span><span class="ta-rating new">novo</span></a>
-      <a class="ta-item" target="_blank" rel="noopener" href="https://www.tripadvisor.com.br/Restaurant_Review-g2352114-d8230462-Reviews-Pastelaria_Acai-Santa_Teresa_State_of_Espirito_Santo.html"><span class="ta-name">Pastelaria Açaí</span><span class="ta-rating new">novo</span></a>
-      <a class="ta-item" target="_blank" rel="noopener" href="https://www.tripadvisor.com.br/Restaurant_Review-g2352114-d8189962-Reviews-Casa_de_Lanches_Buona_Gente-Santa_Teresa_State_of_Espirito_Santo.html"><span class="ta-name">Casa de Lanches Buona Gente</span><span class="ta-rating new">novo</span></a>
+      <div class="turismo-card" data-reveal>
+        <div class="turismo-top" style="background:linear-gradient(160deg,#8a4a3a,var(--ink));"><span class="emoji">🍝</span></div>
+        <div class="turismo-body">
+          <div class="turismo-cat">Cantina italiana</div>
+          <div class="turismo-title">Gioconda Cantina Italiana</div>
+          <p class="turismo-desc">Ambiente rústico-chique na Rua do Lazer, conhecido pelo porco na lata e por uma carta generosa de massas e vinhos.</p>
+          <a class="turismo-ig ig-link" target="_blank" rel="noopener" href="https://www.instagram.com/gioconda.cantinaitaliana/">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+            @gioconda.cantinaitaliana
+          </a>
+        </div>
+      </div>
+      <div class="turismo-card" data-reveal>
+        <div class="turismo-top" style="background:linear-gradient(160deg,#3f5a70,var(--ink));"><span class="emoji">🐟</span></div>
+        <div class="turismo-body">
+          <div class="turismo-cat">Portuguesa</div>
+          <div class="turismo-title">Tia Manuela Restaurante Português</div>
+          <p class="turismo-desc">Bacalhau preparado com receitas de família, num salão aconchegante decorado à portuguesa.</p>
+        </div>
+      </div>
+      <div class="turismo-card" data-reveal>
+        <div class="turismo-top" style="background:linear-gradient(160deg,#9c7b4f,var(--ink));"><span class="emoji">🍪</span></div>
+        <div class="turismo-body">
+          <div class="turismo-cat">Fábrica & cafeteria</div>
+          <div class="turismo-title">Claid's Biscoitos</div>
+          <p class="turismo-desc">Fábrica e loja de biscoitos artesanais desde 1990, parada praticamente obrigatória na entrada da cidade.</p>
+          <a class="turismo-ig ig-link" target="_blank" rel="noopener" href="https://www.instagram.com/claidsbiscoitos/">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+            @claidsbiscoitos
+          </a>
+        </div>
+      </div>
+      <div class="turismo-card" data-reveal>
+        <div class="turismo-top" style="background:linear-gradient(160deg,#6b5a3a,var(--ink));"><span class="emoji">🍷</span></div>
+        <div class="turismo-body">
+          <div class="turismo-cat">Italiana rural</div>
+          <div class="turismo-title">Romanha</div>
+          <p class="turismo-desc">Massas caseiras e pratos rurais num sítio bucólico do Circuito Caravaggio, com lojinha de produtos da região.</p>
+        </div>
+      </div>
+      <div class="turismo-card" data-reveal>
+        <div class="turismo-top" style="background:linear-gradient(160deg,#b4502e,var(--ink));"><span class="emoji">🍕</span></div>
+        <div class="turismo-body">
+          <div class="turismo-cat">Pizzaria</div>
+          <div class="turismo-title">La Taverneta Restaurante e Pizzaria</div>
+          <p class="turismo-desc">Pizzas de forno a lenha em um salão de pedra com lareira, num dos points mais charmosos do centro.</p>
+        </div>
+      </div>
+      <div class="turismo-card" data-reveal>
+        <div class="turismo-top" style="background:linear-gradient(160deg,var(--teal-dark),var(--ink));"><span class="emoji">🍽️</span></div>
+        <div class="turismo-body">
+          <div class="turismo-cat">Italiana contemporânea</div>
+          <div class="turismo-title">Fabricio Bar + Restaurante</div>
+          <p class="turismo-desc">Cozinha italiana com toques capixabas, num casarão histórico da Rua do Lazer.</p>
+        </div>
+      </div>
+      <div class="turismo-card" data-reveal>
+        <div class="turismo-top" style="background:linear-gradient(160deg,#8a6a3a,var(--ink));"><span class="emoji">🧀</span></div>
+        <div class="turismo-body">
+          <div class="turismo-cat">Italiana</div>
+          <div class="turismo-title">Cantina Italiana</div>
+          <p class="turismo-desc">Cantina rústica na Avenida José Ruschi, com clássicos italianos preparados com ingredientes frescos.</p>
+        </div>
+      </div>
+      <div class="turismo-card" data-reveal>
+        <div class="turismo-top" style="background:linear-gradient(160deg,#c17a3a,var(--ink));"><span class="emoji">🥙</span></div>
+        <div class="turismo-body">
+          <div class="turismo-cat">Esfiharia</div>
+          <div class="turismo-title">Santa Sfiha</div>
+          <p class="turismo-desc">Esfihas abertas de massa vegana em mais de 40 sabores, uma das casas mais premiadas da cidade.</p>
+          <a class="turismo-ig ig-link" target="_blank" rel="noopener" href="https://www.instagram.com/santasfiha/">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+            @santasfiha
+          </a>
+        </div>
+      </div>
+      <div class="turismo-card" data-reveal>
+        <div class="turismo-top" style="background:linear-gradient(160deg,#5a6b6e,var(--ink));"><span class="emoji">📸</span></div>
+        <div class="turismo-body">
+          <div class="turismo-cat">Italiana / instagramável</div>
+          <div class="turismo-title">Armazém Caravaggio</div>
+          <p class="turismo-desc">Cantinhos charmosos e cardápio italiano dentro do Circuito Caravaggio, aberto de quarta a domingo.</p>
+        </div>
+      </div>
+      <div class="turismo-card" data-reveal>
+        <div class="turismo-top" style="background:linear-gradient(160deg,#9c8040,var(--ink));"><span class="emoji">🍺</span></div>
+        <div class="turismo-body">
+          <div class="turismo-cat">Boteco</div>
+          <div class="turismo-title">Bar Elite</div>
+          <p class="turismo-desc">Boteco tradicional fundado em 1927, point certo para cerveja gelada e polenta com linguiça.</p>
+        </div>
+      </div>
+      <div class="turismo-card" data-reveal>
+        <div class="turismo-top" style="background:linear-gradient(160deg,#6b3f3f,var(--ink));"><span class="emoji">🎸</span></div>
+        <div class="turismo-body">
+          <div class="turismo-cat">Pub</div>
+          <div class="turismo-title">Red Rock</div>
+          <p class="turismo-desc">Pub de música ao vivo na Rua do Lazer, com chopp artesanal e pizza napolitana.</p>
+          <a class="turismo-ig ig-link" target="_blank" rel="noopener" href="https://www.instagram.com/redrock_pub/">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+            @redrock_pub
+          </a>
+        </div>
+      </div>
+      <div class="turismo-card" data-reveal>
+        <div class="turismo-top" style="background:linear-gradient(160deg,#7a8f6e,var(--ink));"><span class="emoji">🌸</span></div>
+        <div class="turismo-body">
+          <div class="turismo-cat">Bistrô & eventos</div>
+          <div class="turismo-title">San Pietro Vila Parque</div>
+          <p class="turismo-desc">Bistrô e cafeteria com jardim europeu no alto do Circuito Caravaggio, também usado para casamentos e ensaios.</p>
+          <a class="turismo-ig ig-link" target="_blank" rel="noopener" href="https://www.instagram.com/sanpietrovilaparque/">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+            @sanpietrovilaparque
+          </a>
+        </div>
+      </div>
+      <div class="turismo-card" data-reveal>
+        <div class="turismo-top" style="background:linear-gradient(160deg,#8a6a4a,var(--ink));"><span class="emoji">🥂</span></div>
+        <div class="turismo-body">
+          <div class="turismo-cat">Vinícola</div>
+          <div class="turismo-title">Casa dos Espumantes</div>
+          <p class="turismo-desc">Uma das pioneiras do circuito no método Champenoise, com produção própria de espumantes e vinhos.</p>
+        </div>
+      </div>
+      <div class="turismo-card" data-reveal>
+        <div class="turismo-top" style="background:linear-gradient(160deg,#6b5a3a,var(--teal-dark));"><span class="emoji">🍜</span></div>
+        <div class="turismo-body">
+          <div class="turismo-cat">Italiana</div>
+          <div class="turismo-title">Restaurante Mazzolin Di Fiori</div>
+          <p class="turismo-desc">Mais de 30 anos servindo massas caseiras tradicionais em frente à Praça Augusto Ruschi.</p>
+          <a class="turismo-ig ig-link" target="_blank" rel="noopener" href="https://www.instagram.com/restaurante_mazzolin/">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+            @restaurante_mazzolin
+          </a>
+        </div>
+      </div>
+      <div class="turismo-card" data-reveal>
+        <div class="turismo-top" style="background:linear-gradient(160deg,var(--teal),var(--ink));"><span class="emoji">🧑‍🍳</span></div>
+        <div class="turismo-body">
+          <div class="turismo-cat">Bistrô contemporâneo</div>
+          <div class="turismo-title">UNIC Bistrô</div>
+          <p class="turismo-desc">Burrata, massas artesanais e pratos autorais num ambiente intimista no centro da cidade.</p>
+        </div>
+      </div>
+      <div class="turismo-card" data-reveal>
+        <div class="turismo-top" style="background:linear-gradient(160deg,#7a4a3a,var(--ink));"><span class="emoji">🍝</span></div>
+        <div class="turismo-body">
+          <div class="turismo-cat">Italiana</div>
+          <div class="turismo-title">Restaurante Sabor Italiano</div>
+          <p class="turismo-desc">Massas caseiras e clássicos italianos em frente à igreja matriz.</p>
+        </div>
+      </div>
+      <div class="turismo-card" data-reveal>
+        <div class="turismo-top" style="background:linear-gradient(160deg,#9c5a3a,var(--ink));"><span class="emoji">🍕</span></div>
+        <div class="turismo-body">
+          <div class="turismo-cat">Italiana / pizza</div>
+          <div class="turismo-title">Mistura Fina</div>
+          <p class="turismo-desc">Cardápio de massas e pizzas num ambiente simples e despretensioso no centro.</p>
+        </div>
+      </div>
+      <div class="turismo-card" data-reveal>
+        <div class="turismo-top" style="background:linear-gradient(160deg,#6b3f2a,var(--ink));"><span class="emoji">🥩</span></div>
+        <div class="turismo-body">
+          <div class="turismo-cat">Cervejaria & steakhouse</div>
+          <div class="turismo-title">Cervejaria Teresense</div>
+          <p class="turismo-desc">Cerveja artesanal de produção própria, cortes de carne e música ao vivo nos finais de semana.</p>
+        </div>
+      </div>
+      <div class="turismo-card" data-reveal>
+        <div class="turismo-top" style="background:linear-gradient(160deg,#8a5a6e,var(--ink));"><span class="emoji">🍲</span></div>
+        <div class="turismo-body">
+          <div class="turismo-cat">Gastrobar</div>
+          <div class="turismo-title">Santa Canela Restaurante</div>
+          <p class="turismo-desc">Risotos e pratos autorais assinados por chef, na Rua do Lazer, com atendimento bastante elogiado.</p>
+          <a class="turismo-ig ig-link" target="_blank" rel="noopener" href="https://www.instagram.com/santacanelagastrobar/">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+            @santacanelagastrobar
+          </a>
+        </div>
+      </div>
+      <div class="turismo-card" data-reveal>
+        <div class="turismo-top" style="background:linear-gradient(160deg,#5a6b4a,var(--ink));"><span class="emoji">🍻</span></div>
+        <div class="turismo-body">
+          <div class="turismo-cat">Boteco</div>
+          <div class="turismo-title">Bar Do Leo</div>
+          <p class="turismo-desc">Cerveja gelada e petiscos como mandioca frita, num clima tranquilo e familiar.</p>
+        </div>
+      </div>
+      <div class="turismo-card" data-reveal>
+        <div class="turismo-top" style="background:linear-gradient(160deg,#a35a7a,var(--ink));"><span class="emoji">🍰</span></div>
+        <div class="turismo-body">
+          <div class="turismo-cat">Confeitaria</div>
+          <div class="turismo-title">AMOR in CAKE CONFEITARIA</div>
+          <p class="turismo-desc">Doces artesanais e taças de brigadeiro, parada certa para quem tem um dente doce.</p>
+        </div>
+      </div>
+      <div class="turismo-card" data-reveal>
+        <div class="turismo-top" style="background:linear-gradient(160deg,#3f6b6e,var(--ink));"><span class="emoji">🦐</span></div>
+        <div class="turismo-body">
+          <div class="turismo-cat">Café & frutos do mar</div>
+          <div class="turismo-title">La Sophia Ristorante</div>
+          <p class="turismo-desc">Recém-chegada à cena gastronômica local, com propostas de café e frutos do mar.</p>
+        </div>
+      </div>
+      <div class="turismo-card" data-reveal>
+        <div class="turismo-top" style="background:linear-gradient(160deg,#4a3f6b,var(--ink));"><span class="emoji">🌆</span></div>
+        <div class="turismo-body">
+          <div class="turismo-cat">Rooftop & pizzaria</div>
+          <div class="turismo-title">Tarot Rooftop</div>
+          <p class="turismo-desc">Pizzas de massa leve e drinks num terraço elevado, com boa música ambiente.</p>
+        </div>
+      </div>
+      <div class="turismo-card" data-reveal>
+        <div class="turismo-top" style="background:linear-gradient(160deg,#6b2f3f,var(--ink));"><span class="emoji">🍷</span></div>
+        <div class="turismo-body">
+          <div class="turismo-cat">Vinhos</div>
+          <div class="turismo-title">Vino Santa Teresa</div>
+          <p class="turismo-desc">Endereço dedicado aos vinhos, uma das novidades do circuito gastronômico da cidade.</p>
+        </div>
+      </div>
+      <div class="turismo-card" data-reveal>
+        <div class="turismo-top" style="background:linear-gradient(160deg,#7a5a3f,var(--ink));"><span class="emoji">🥃</span></div>
+        <div class="turismo-body">
+          <div class="turismo-cat">Bar & licores</div>
+          <div class="turismo-title">Casa Dei Liquori</div>
+          <p class="turismo-desc">Bar especializado em bebidas destiladas e licores, para quem gosta de drinks bem servidos.</p>
+        </div>
       </div>
     </div>
+
+    <p class="turismo-note" data-reveal>Seleção baseada em pesquisa pública e em perfis que documentam o dia a dia da região, como <a target="_blank" rel="noopener" href="https://www.instagram.com/viajando_por_santateresa/">@viajando_por_santateresa</a>, que compartilha roteiros e curadoria sobre gastronomia e turismo em Santa Teresa.</p>
+
   </div>
 </section>
 

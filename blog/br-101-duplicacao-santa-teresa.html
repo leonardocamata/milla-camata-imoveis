@@ -9,6 +9,23 @@
   gtag('js', new Date());
   gtag('config', 'AW-18382453338');
 </script>
+<!-- Event snippet for Contato conversion page -->
+<script>
+function gtag_report_conversion(url) {
+  var callback = function () {
+    if (typeof(url) != 'undefined') {
+      window.location = url;
+    }
+  };
+  gtag('event', 'conversion', {
+      'send_to': 'AW-18382453338/ITEOCLPhrt8cENr0t71E',
+      'value': 1.0,
+      'currency': 'BRL',
+      'event_callback': callback
+  });
+  return false;
+}
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BR-101 duplicada até Fundão: o que muda para quem investe em Santa Teresa | Caderno de Campo</title>
@@ -86,7 +103,7 @@
 
     <div class="post-cta">
       <p>Quer entender como isso se traduz nos terrenos disponíveis hoje no Circuito Caravaggio?</p>
-      <a class="btn" target="_blank" rel="noopener" href="https://wa.me/5527996092266?text=Ol%C3%A1%20Milla%2C%20li%20o%20artigo%20sobre%20a%20duplica%C3%A7%C3%A3o%20da%20BR-101%20e%20quero%20saber%20mais%20sobre%20os%20terrenos%20dispon%C3%ADveis.">Falar com a Milla no WhatsApp</a>
+      <a class="btn" target="_blank" rel="noopener" href="https://wa.me/5527996092266?text=Ol%C3%A1%20Milla%2C%20li%20o%20artigo%20sobre%20a%20duplica%C3%A7%C3%A3o%20da%20BR-101%20e%20quero%20saber%20mais%20sobre%20os%20terrenos%20dispon%C3%ADveis." onclick="gtag_report_conversion();">Falar com a Milla no WhatsApp</a>
     </div>
 
     <p class="source-note">Fontes: Ecovias Capixaba, DNIT-ES, Folha Vitória, A Gazeta e Câmara Municipal de Santa Teresa. Dados e cronogramas de obra estão sujeitos a alteração pela concessionária responsável.</p>

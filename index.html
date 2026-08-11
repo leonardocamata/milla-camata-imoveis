@@ -8,6 +8,7 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'AW-18382453338');
+  gtag('config', 'G-2QS3R63SDG');
 </script>
 <!-- Event snippet for Contato conversion page -->
 <script>
@@ -1068,7 +1069,7 @@ function gtag_report_conversion(url) {
     const slides = imagens.map((item, i) => {
       if (item && typeof item === 'object' && item.video) {
         return `<div class="video-slide" data-idx="${i}">
-          <video src="${item.video}" poster="${item.poster || ''}" muted loop autoplay playsinline preload="auto"></video>
+          <video data-src="${item.video}" poster="${item.poster || ''}" muted loop autoplay playsinline preload="none"></video>
           <span class="video-badge">🔇 vídeo</span>
         </div>`;
       }
@@ -1126,6 +1127,17 @@ function gtag_report_conversion(url) {
     alvos.forEach(i => {
       const el = track.querySelector(`img[data-idx="${i}"]`);
       if (el && el.dataset.src) { el.src = el.dataset.src; delete el.dataset.src; }
+    });
+    // Video so baixa quando o slide dele esta em exibicao (nao tem autoplay,
+    // que forcava o download dos 10 MB de mp4 na abertura da pagina).
+    track.querySelectorAll('video').forEach(v => {
+      const slide = v.closest('.video-slide');
+      if (slide && slide.dataset.idx == g.current) {
+        if (v.dataset.src) { v.src = v.dataset.src; delete v.dataset.src; }
+        v.play().catch(() => {});
+      } else if (!v.paused) {
+        v.pause();
+      }
     });
   }
 
@@ -1522,6 +1534,27 @@ function gtag_report_conversion(url) {
     });
   }, { rootMargin: '200px' });
   document.querySelectorAll('.carousel[data-gallery]').forEach(c => carrosselIO.observe(c));
+
+  // Toca o video so enquanto o carrossel dele esta visivel na tela. Sem isso,
+  // quem apenas rola a pagina baixa o mp4 inteiro sem nunca parar para assistir.
+  const videoIO = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      const car = e.target;
+      const g = galleries[car.dataset.gallery];
+      const v = car.querySelector('video');
+      if (!v || !g) return;
+      const videoEhOSlideAtual = !!car.querySelector(`.video-slide[data-idx="${g.current}"]`);
+      if (e.isIntersecting && videoEhOSlideAtual) {
+        if (v.dataset.src) { v.src = v.dataset.src; delete v.dataset.src; }
+        v.play().catch(() => {});
+      } else if (!v.paused) {
+        v.pause();
+      }
+    });
+  }, { threshold: 0.25 });
+  document.querySelectorAll('.carousel[data-gallery]').forEach(c => {
+    if (c.querySelector('video')) videoIO.observe(c);
+  });
 
   const els = document.querySelectorAll('[data-reveal]');
   const io = new IntersectionObserver((entries)=>{

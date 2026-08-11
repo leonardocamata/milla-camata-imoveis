@@ -39,7 +39,7 @@ Depois da migração:
 |---|---|---|
 | `index.html` | 16,3 MB | 83 KB |
 | domInteractive | 3.719 ms | 144 ms |
-| Baixado ao abrir a página | 12,2 MB (sempre) | ~120 KB |
+| Baixado ao abrir a página | 12,9 MB (sempre) | ~570 KB |
 | Baixado rolando a página inteira | 12,2 MB | ~4,3 MB |
 
 ### Convenção de nomes
@@ -86,6 +86,40 @@ O CSS depende de `flex:0 0 100%` em `.carousel-track img`, então uma `<img>` se
 
 **Se você mexer em `buildCarouselHTML`, mantenha o `data-idx="${i}"`** — é por
 ele que `primeSlides` encontra cada slide.
+
+---
+
+## Vídeos
+
+Ficam em `videos/`, junto do poster (`<nome>-poster.jpg`). No array `imagens`
+entram como objeto no lugar da string:
+
+```js
+{ video: "videos/arquivo.mp4", poster: "videos/arquivo-poster.jpg" }
+```
+
+**A tag `<video>` nasce sem `src`, com `data-src` e `preload="none"`.** O
+`autoplay` continua lá, mas só age depois que o `src` é atribuído — por isso
+nada é baixado até o carrossel aparecer na tela.
+
+Antes desse ajuste os dois mp4 (10,35 MB somados) eram baixados na abertura da
+página, mesmo estando em cards lá embaixo: com `autoplay` o navegador ignora o
+`preload` e busca o arquivo de qualquer jeito.
+
+Quem controla é o `videoIO`, um `IntersectionObserver` com `threshold: 0.25`:
+atribui o `src` e toca quando o carrossel fica visível, e **pausa quando sai da
+tela** — pausar interrompe o buffer, senão quem só rola a página acaba baixando
+o vídeo inteiro sem parar para assistir. O `primeSlides()` faz o mesmo controle
+ao navegar entre slides.
+
+**Cuidado ao testar vídeo com Playwright:** o Chromium headless não traz o codec
+H.264, então todo mp4 falha com `DEMUXER_ERROR_NO_SUPPORTED_STREAMS` e nunca
+toca. Isso é limitação do ambiente de teste, não bug do site. Para conferir a
+lógica sem depender do codec, dá para instrumentar `HTMLMediaElement.prototype`
+com `add_init_script` e registrar as chamadas de `play`, `pause` e `src`.
+
+Vídeo novo: manter o mp4 o mais leve possível (os atuais têm 7,1 MB e 3,7 MB, o
+que é bastante) e processar o poster pelo mesmo pipeline das fotos.
 
 ---
 
@@ -170,8 +204,9 @@ Conversão dispara por `onclick="gtag_report_conversion();"` nos botões de
 WhatsApp. No `index.html` os `href` são montados por JS a partir de
 `WHATSAPP_NUMERO`, por isso o `onclick` é o ponto certo de encaixe.
 
-**Pendência conhecida:** o `gtag('config', 'G-2QS3R63SDG')` do GA4 ainda não
-está nas páginas — só o tag do Ads.
+Desde 11/08/2026 o GA4 (`gtag('config', 'G-2QS3R63SDG')`) está instalado nas
+cinco páginas, logo abaixo do `config` do Ads. Ao criar página nova, copiar o
+`<head>` inteiro de uma existente garante os três.
 
 ---
 

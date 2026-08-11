@@ -135,7 +135,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--teal);outline-offse
 
 /* ARTICLE IMAGES / ANTES-DEPOIS */
 article.post figure{margin:32px 0;}
-article.post figure img{width:100%;border:1px solid var(--line);}
+article.post figure img{width:100%;height:auto;border:1px solid var(--line);}
 article.post figcaption{font-size:13px;color:var(--stone);margin-top:10px;line-height:1.45;}
 .ba-tag{
   display:inline-block;background:var(--ink);color:var(--gold);

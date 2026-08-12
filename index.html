@@ -97,10 +97,10 @@ function gtag_report_conversion(url) {
 
 <section class="dossier">
   <div class="wrap">
-    <div class="dossier-item"><div class="n">5</div><div class="t">terrenos na carteira atual</div></div>
-    <div class="dossier-item"><div class="n">535 a 5.810</div><div class="t">m² disponíveis</div></div>
+    <div class="dossier-item"><div class="n" id="dossier-qtd">—</div><div class="t">terrenos na carteira atual</div></div>
+    <div class="dossier-item"><div class="n" id="dossier-area">—</div><div class="t">m² disponíveis</div></div>
     <div class="dossier-item"><div class="n">100%</div><div class="t">área verificada</div></div>
-    <div class="dossier-item"><div class="n">R$250mil a R$1M</div><div class="t">faixa de valores</div></div>
+    <div class="dossier-item"><div class="n" id="dossier-valor">—</div><div class="t">faixa de valores</div></div>
   </div>
 </section>
 
@@ -409,6 +409,40 @@ function gtag_report_conversion(url) {
   });
 
   document.getElementById('stat-count').textContent = count;
+
+  /* -------------------------------------------------------------------------
+     NUMEROS DO DOSSIER — calculados a partir do array de terrenos, para nunca
+     ficarem desatualizados. Contam os lotes do condominio individualmente.
+     ------------------------------------------------------------------------- */
+  (function preencherDossier(){
+    const num = txt => Number(String(txt).replace(/[^\d,]/g,'').replace(/\./g,'').replace(',','.')) || 0;
+    const areas = [], valores = [];
+
+    terrenos.filter(t => t.disponivel).forEach(t => {
+      if (t.tipo === "empreendimento") {
+        (t.lotes || []).forEach(l => {
+          areas.push(num(l.area));
+          // no condominio o valor vem como "540 mil"
+          valores.push(num(l.valor) * (/mil/i.test(l.valor) ? 1000 : 1));
+        });
+      } else {
+        areas.push(num(t.area));
+        valores.push(num(t.valor));
+      }
+    });
+
+    const fmtArea = n => n.toLocaleString('pt-BR');
+    const fmtValor = n => n >= 1e6
+      ? 'R$' + (n/1e6).toFixed(1).replace('.0','').replace('.',',') + 'M'
+      : 'R$' + Math.round(n/1000) + 'mil';
+
+    const qtd = document.getElementById('dossier-qtd');
+    const area = document.getElementById('dossier-area');
+    const valor = document.getElementById('dossier-valor');
+    if (qtd) qtd.textContent = count;
+    if (area && areas.length) area.textContent = `${fmtArea(Math.min(...areas))} a ${fmtArea(Math.max(...areas))}`;
+    if (valor && valores.length) valor.textContent = `${fmtValor(Math.min(...valores))} a ${fmtValor(Math.max(...valores))}`;
+  })();
 
   initCarousels();
 </script>

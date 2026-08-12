@@ -195,7 +195,13 @@ que é bastante) e processar o poster pelo mesmo pipeline das fotos.
 Vídeo, quando houver, é um objeto no lugar da string, normalmente no primeiro
 slide: `{ video: "videos/arquivo.mp4", poster: "videos/arquivo-poster.jpg" }`.
 
-`disponivel: false` esconde o card sem apagar o registro. O card, o contador de
+`disponivel: false` esconde o card sem apagar o registro. Os três números do
+**dossier** (quantidade, faixa de área e faixa de valores) e o contador do hero
+são calculados a partir do array no carregamento — os lotes do condomínio contam
+individualmente, e terrenos com `disponivel: false` ficam fora. Não edite esses
+números na mão: eles ficam desatualizados em silêncio, que foi o que aconteceu
+até 12/08/2026 (diziam 5 terrenos e faixa até R$ 1M quando já havia 13 e um card
+de R$ 2,7M). O card, o contador de
 terrenos e o texto pré-preenchido do WhatsApp derivam todos desse objeto — não
 existe HTML a duplicar.
 

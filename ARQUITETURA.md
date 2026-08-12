@@ -10,8 +10,11 @@ adicionar qualquer terreno ou card de turismo novo.**
 ## Estrutura de arquivos
 
 ```
-index.html                  site inteiro (HTML + CSS + JS num arquivo só)
-img/                        TODAS as fotos do index.html
+index.html                  home: hero, sobre, região, terrenos, explore, contato
+style.css                   CSS compartilhado por index.html e turismo/
+carousel.js                 motor de carrossel + lightbox (compartilhado)
+turismo/index.html          página de turismo (42 cards, 24 carrosséis)
+img/                        TODAS as fotos de index.html e turismo/
 videos/                     vídeos dos carrosséis + posters
 blog/index.html             lista do Caderno de Campo
 blog/<slug>.html            um arquivo por artigo
@@ -19,6 +22,28 @@ blog/style.css              CSS compartilhado dos artigos
 blog/img/                   fotos dos artigos
 sitemap.xml
 ```
+
+**Arquivos compartilhados (migração de 12/08/2026):** a seção de turismo saiu do
+`index.html` e virou página própria. Para não duplicar código, o CSS foi para
+`style.css` e o motor de carrossel para `carousel.js`, ambos na raiz e usados
+pelas duas páginas. O `index.html` caiu de 88 KB para 22 KB, e o DOM da home de
+1.137 para 528 nós — a home tinha 55% dos nós e 61% da altura só em turismo.
+
+O `carousel.js` **não conhece os dados**. Cada página registra seus álbuns em
+`galleries[]` e, no fim do próprio script, chama `initCarousels()`, que liga os
+três `IntersectionObserver` (priming de slides, controle de vídeo e animação
+`data-reveal`). Se uma página esquecer o `initCarousels()`, os carrosséis
+aparecem mas não carregam os slides seguintes.
+
+Caminhos dentro de `turismo/index.html` são relativos: `../img/...`,
+`../style.css`, `../carousel.js`, `../index.html#terrenos`.
+
+**Atenção ao menu no mobile:** o CSS esconde todos os links do topo abaixo de
+760 px, deixando só o botão de WhatsApp (`.navlinks a:not(.nav-cta)`). Como ~90%
+do tráfego é mobile, qualquer página interna nova precisa de um link visível
+fora do menu — é para isso que existe a seção `.explore` no `index.html`, com
+cartões para Turismo e Caderno de Campo. Sem ela, a página fica inalcançável
+para a maioria dos visitantes.
 
 ---
 

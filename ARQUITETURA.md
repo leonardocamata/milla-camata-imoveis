@@ -152,6 +152,19 @@ existe HTML a duplicar.
 Para inserir num ponto exato do array sem usar `str_replace` (que falha em
 linhas gigantes), vale `sed -i '<linha>r arquivo.js' index.html`.
 
+**Armadilha ao editar o array por script:** as entradas antigas terminam com
+`imagens: [...]` **sem vírgula** depois do `]`. Procurar o fim do array com
+`find('],')` pula essa entrada e casa com o `destaques: [...],` do terreno
+seguinte, apagando o bloco inteiro que estiver no meio. Ache o `]` que fecha
+contando colchetes (ignorando os que estão dentro de strings) e confira que o
+número de itens não mudou antes de gravar.
+
+**Ordem dos slides e desempenho:** deixe sempre uma foto no slide 1 e o vídeo no
+slide 2. Com o vídeo em primeiro, o `videoIO` atribui o `src` assim que o card
+entra na tela e o mp4 inteiro é baixado de quem só passou rolando. Com uma foto
+em primeiro, o vídeo só carrega se a pessoa clicar na seta — nos dois cards com
+vídeo isso economizou 10,35 MB por visita.
+
 ---
 
 ## Adicionar um card de turismo

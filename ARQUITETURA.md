@@ -38,6 +38,31 @@ aparecem mas não carregam os slides seguintes.
 Caminhos dentro de `turismo/index.html` são relativos: `../img/...`,
 `../style.css`, `../carousel.js`, `../index.html#terrenos`.
 
+**A barra superior é idêntica nas seis páginas** e existe em duplicidade: as
+regras estão em `style.css` (home e turismo) **e** em `blog/style.css`, porque o
+blog tem folha própria. As duas cópias precisam ficar iguais — se mudar em uma,
+mude na outra. Marcação canônica (ajuste os `../` conforme a pasta):
+
+```html
+<header>
+  <nav class="wrap">
+    <a href="../index.html" class="brand">Milla Camata <span>corretora de imóveis</span></a>
+    <div class="navlinks">
+      <a href="../index.html#sobre">Sobre</a>
+      <a href="../index.html#terrenos">Terrenos</a>
+      <a href="../turismo/index.html">Turismo</a>
+      <a href="index.html" style="color:var(--gold);">Caderno de Campo</a>
+      <a href="https://www.instagram.com/millacamata_artistaecorretora/" target="_blank" rel="noopener" class="ig-link nav-ig">...Instagram</a>
+      <a href="../index.html#contato" class="nav-cta">Falar no WhatsApp</a>
+    </div>
+  </nav>
+</header>
+```
+
+São sempre os mesmos seis itens, na mesma ordem. O `style="color:var(--gold);"`
+marca a página atual e vai em **um** item só. A classe é `navlinks`, sem hífen —
+`nav-links` era a convenção antiga do blog e não existe mais em nenhum arquivo.
+
 **Atenção ao menu no mobile:** o CSS esconde todos os links do topo abaixo de
 760 px, deixando só o botão de WhatsApp (`.navlinks a:not(.nav-cta)`). Como ~90%
 do tráfego é mobile, qualquer página interna nova precisa de um link visível

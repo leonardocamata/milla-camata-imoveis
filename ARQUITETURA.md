@@ -63,6 +63,22 @@ São sempre os mesmos seis itens, na mesma ordem. O `style="color:var(--gold);"`
 marca a página atual e vai em **um** item só. A classe é `navlinks`, sem hífen —
 `nav-links` era a convenção antiga do blog e não existe mais em nenhum arquivo.
 
+**Imóveis que não são terrenos:** desde 16/08/2026 o array inclui uma casa
+(`Casa na Rota do Caravaggio`). O botão e a mensagem do WhatsApp se adaptam por
+`/^casa/i.test(t.nome)` — nome começando com "Casa" gera "Falar sobre esta casa".
+Se entrar outro tipo (sítio, chácara, apartamento), essa checagem precisa
+crescer, senão o botão volta a dizer "terreno".
+
+O campo `area` da casa traz dois números ("1.600 m² · 240 m² construídos"). Por
+isso o parser do dossier lê **apenas o primeiro número** do texto; somar os
+dígitos dos dois gerava área de 1.600.240 m². Mantenha a área do terreno sempre
+primeiro no campo.
+
+**Pendência de nomenclatura:** o dossier e o hero dizem "terrenos" ao contar
+imóveis, e a contagem inclui a casa. Com um imóvel só a imprecisão é pequena, mas
+se entrarem mais casas vale decidir entre trocar o rótulo para "imóveis",
+separar as contagens, ou excluir casas do contador.
+
 **Atenção ao menu no mobile:** o CSS esconde todos os links do topo abaixo de
 760 px, deixando só o botão de WhatsApp (`.navlinks a:not(.nav-cta)`). Como ~90%
 do tráfego é mobile, qualquer página interna nova precisa de um link visível

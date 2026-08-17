@@ -313,6 +313,16 @@ function gtag_report_conversion(url) {
       imagens: ["img/terreno-sao-pedro-e1-1.jpg", "img/terreno-sao-pedro-e1-2.jpg", "img/terreno-sao-pedro-e1-3.jpg", "img/terreno-sao-pedro-e1-4.jpg", "img/terreno-sao-pedro-e1-5.jpg", "img/terreno-sao-pedro-e1-6.jpg"],
     },
     {
+      tipo: "simples",
+      disponivel: true,
+      nome: "Casa na Rota do Caravaggio",
+      local: "Rota do Caravaggio, Santa Teresa — acesso pela via principal, a 860 m de altitude",
+      area: "1.600 m² · 240 m² construídos",
+      valor: "R$ 1.250.000",
+      destaques: ["Sala, cozinha, 3 quartos (1 suíte), banheiro social e banheiro externo", "Varanda grande em L e área gourmet com churrasqueira e cooktop", "Platô pronto atrás da casa, para ampliação ou construção de chalés", "Aceita troca por casa na zona urbana de Santa Teresa ou Santa Maria"],
+      imagens: ["img/casa-rota-do-caravaggio-1.jpg", { video: "videos/casa-caravaggio.mp4", poster: "videos/casa-caravaggio-poster.jpg" }, "img/casa-rota-do-caravaggio-2.jpg", "img/casa-rota-do-caravaggio-3.jpg", "img/casa-rota-do-caravaggio-4.jpg", "img/casa-rota-do-caravaggio-5.jpg", "img/casa-rota-do-caravaggio-6.jpg", "img/casa-rota-do-caravaggio-7.jpg", "img/casa-rota-do-caravaggio-8.jpg", "img/casa-rota-do-caravaggio-9.jpg", "img/casa-rota-do-caravaggio-10.jpg", "img/casa-rota-do-caravaggio-11.jpg", "img/casa-rota-do-caravaggio-12.jpg"],
+    },
+    {
       tipo: "empreendimento",
       disponivel: true,
       nome: "Condomínio Le Bosque",
@@ -412,7 +422,7 @@ function gtag_report_conversion(url) {
             <div class="property-specs"><span>${t.area}</span></div>
             <ul class="property-highlights">${highlights}</ul>
             <div class="property-price">${t.valor}<span>valor de venda</span></div>
-            <a class="property-cta" target="_blank" rel="noopener" href="${linkWhats(`Olá Milla, tenho interesse no ${t.nome} (${t.area} - ${t.valor}).`)}">Falar sobre este terreno</a>
+            <a class="property-cta" target="_blank" rel="noopener" href="${linkWhats(`Olá Milla, tenho interesse ${/^casa/i.test(t.nome) ? 'na' : 'no'} ${t.nome} (${t.area} - ${t.valor}).`)}">Falar sobre ${/^casa/i.test(t.nome) ? 'esta casa' : 'este terreno'}</a>
           </div>
         </div>`);
     }
@@ -425,7 +435,13 @@ function gtag_report_conversion(url) {
      ficarem desatualizados. Contam os lotes do condominio individualmente.
      ------------------------------------------------------------------------- */
   (function preencherDossier(){
-    const num = txt => Number(String(txt).replace(/[^\d,]/g,'').replace(/\./g,'').replace(',','.')) || 0;
+    // Le apenas o PRIMEIRO numero do texto. Necessario porque campos como
+    // "1.600 m² · 240 m² construídos" trazem dois valores, e somar os digitos
+    // dos dois geraria uma area absurda (1.600.240).
+    const num = txt => {
+      const m = String(txt).match(/[\d.,]+/);
+      return m ? Number(m[0].replace(/\./g,'').replace(',','.')) || 0 : 0;
+    };
     const areas = [], valores = [];
 
     terrenos.filter(t => t.disponivel).forEach(t => {

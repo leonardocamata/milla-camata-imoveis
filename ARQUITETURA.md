@@ -169,6 +169,22 @@ descartado de propósito.
 O lightbox copia o `alt` do slide de origem, então não precisa de tratamento
 separado.
 
+**Armadilha (quebrou o layout em 22/08/2026):** uma `<img>` **sem `src`** —
+que é o estado de nascimento de todo slide 2+ — renderiza o texto do `alt` como
+conteúdo. Como item de flex ela tem `min-width:auto` e não encolhe abaixo desse
+texto, e o `repeat(3,1fr)` do `.property-grid` é `minmax(auto,1fr)`, que respeita
+esse mínimo. As colunas foram para 998 / 350 / 1247 px. Por isso
+`.carousel-track img` carrega `min-width:0` e `font-size:0` no `style.css`:
+
+```css
+.carousel-track img{...;flex:0 0 100%;min-width:0;font-size:0;}
+.carousel-track .video-slide{...;flex:0 0 100%;min-width:0;}
+```
+
+`font-size:0` zera o texto sem tirar o atributo — leitor de tela e buscador
+continuam lendo o `alt`. **Não remova nenhuma das duas propriedades**, e se
+algum dia surgir outro carrossel com slides sem `src`, ele precisa das mesmas.
+
 ---
 
 ## Vídeos
@@ -381,4 +397,9 @@ Depois de publicar, reenviar o sitemap no Search Console acelera o rastreio.
 5. **Renderizar num navegador de verdade** (Playwright) e conferir: nenhum erro
    de JS no console, contagem de cards correta, e o slide visível de cada
    carrossel efetivamente carregado depois de navegar.
-6. Push para `origin main`; o GitHub Pages leva um ou dois minutos.
+6. **Conferir o grid**, se mexeu em carrossel, `alt` ou CSS de imagem:
+   `getComputedStyle(document.querySelector('.property-grid')).gridTemplateColumns`
+   tem que devolver três larguras iguais em 1200 px. Medir isso pega a classe de
+   bug que texto dentro de slide sem `src` provoca, que passa reto em `node
+   --check` e não gera erro de console.
+7. Push para `origin main`; o GitHub Pages leva um ou dois minutos.

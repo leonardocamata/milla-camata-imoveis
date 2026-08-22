@@ -164,8 +164,15 @@
   /* CARROSSEL DE FOTOS */
   .carousel{position:relative;width:100%;height:100%;overflow:hidden;cursor:pointer;}
   .carousel-track{display:flex;width:100%;height:100%;transition:transform .35s ease;}
-  .carousel-track img{width:100%;height:100%;object-fit:cover;flex:0 0 100%;}
-  .carousel-track .video-slide{position:relative;width:100%;height:100%;flex:0 0 100%;}
+  /* min-width:0 e font-size:0 sao obrigatorios: os slides 2+ nascem SEM src e,
+     nesse estado, o navegador renderiza o texto do alt como conteudo da img.
+     Como item de flex ela tem min-width:auto e nao encolhe abaixo desse texto,
+     e o `1fr` do .property-grid (que e minmax(auto,1fr)) respeita esse minimo —
+     o resultado eram colunas de larguras totalmente diferentes. O font-size:0
+     zera o texto sem remover o atributo, entao leitor de tela e buscador
+     continuam lendo o alt normalmente. */
+  .carousel-track img{width:100%;height:100%;object-fit:cover;flex:0 0 100%;min-width:0;font-size:0;}
+  .carousel-track .video-slide{position:relative;width:100%;height:100%;flex:0 0 100%;min-width:0;}
   .carousel-track .video-slide video{width:100%;height:100%;object-fit:cover;display:block;}
   .video-badge{position:absolute;top:14px;right:14px;background:rgba(20,20,20,0.62);color:var(--white);font-size:11px;font-weight:600;padding:5px 9px;border-radius:12px;z-index:3;display:flex;align-items:center;gap:4px;letter-spacing:0.02em;}
   .carousel-arrow{

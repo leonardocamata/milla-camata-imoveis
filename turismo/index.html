@@ -49,6 +49,26 @@ function gtag_report_conversion(url) {
 <meta property="og:description" content="Restaurantes, cafés, cervejarias, pousadas e pontos históricos da região serrana do Espírito Santo.">
 <meta property="og:url" content="https://millacamata.com.br/turismo/">
 <meta property="og:locale" content="pt_BR">
+<meta property="og:image" content="https://millacamata.com.br/img/og-turismo.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Prato servido em restaurante do Circuito Caravaggio, Santa Teresa, ES">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "@id": "https://millacamata.com.br/turismo/#pagina",
+  "url": "https://millacamata.com.br/turismo/",
+  "name": "O que fazer em Santa Teresa e no Circuito Caravaggio",
+  "description": "Restaurantes, cafés, cervejarias, pousadas e pontos históricos da região serrana do Espírito Santo.",
+  "inLanguage": "pt-BR",
+  "primaryImageOfPage": "https://millacamata.com.br/img/og-turismo.jpg",
+  "isPartOf": { "@id": "https://millacamata.com.br/#site" },
+  "about": { "@type": "Place", "name": "Santa Teresa, Espírito Santo, Brasil" },
+  "publisher": { "@id": "https://millacamata.com.br/#corretora" }
+}
+</script>
 <link rel="icon" href="../favicon.ico">
 <link rel="preload" href="/fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../style.css">
@@ -609,7 +629,7 @@ function gtag_report_conversion(url) {
   const igrejinhaGalleryIndex = galleries.length;
   galleries.push({ imagens: igrejinhaImagens, current: 0 });
   const igrejinhaVisual = document.getElementById('igrejinha-visual');
-  if (igrejinhaVisual) igrejinhaVisual.innerHTML = buildCarouselHTML(igrejinhaImagens, igrejinhaGalleryIndex, '');
+  if (igrejinhaVisual) igrejinhaVisual.innerHTML = buildCarouselHTML(igrejinhaImagens, igrejinhaGalleryIndex, '', "Igrejinha do Caravaggio — Santa Teresa, ES");
 
 
   // ---- Magazzino Fioravante (carrossel real) ----
@@ -621,7 +641,7 @@ function gtag_report_conversion(url) {
   const fioravanteGalleryIndex = galleries.length;
   galleries.push({ imagens: fioravanteImagens, current: 0 });
   const fioravanteVisual = document.getElementById('fioravante-visual');
-  if (fioravanteVisual) fioravanteVisual.innerHTML = buildCarouselHTML(fioravanteImagens, fioravanteGalleryIndex, '');
+  if (fioravanteVisual) fioravanteVisual.innerHTML = buildCarouselHTML(fioravanteImagens, fioravanteGalleryIndex, '', "Magazzino Fioravante — Santa Teresa, ES");
 
 
   // ---- Bar Elite (carrossel real) ----
@@ -633,7 +653,7 @@ function gtag_report_conversion(url) {
   const bareliteGalleryIndex = galleries.length;
   galleries.push({ imagens: bareliteImagens, current: 0 });
   const bareliteVisual = document.getElementById('barelite-visual');
-  if (bareliteVisual) bareliteVisual.innerHTML = buildCarouselHTML(bareliteImagens, bareliteGalleryIndex, '');
+  if (bareliteVisual) bareliteVisual.innerHTML = buildCarouselHTML(bareliteImagens, bareliteGalleryIndex, '', "Bar Elite — Santa Teresa, ES");
 
 
   // ---- Rua do Lazer (carrossel real) ----
@@ -648,7 +668,7 @@ function gtag_report_conversion(url) {
   const ruadolazerGalleryIndex = galleries.length;
   galleries.push({ imagens: ruadolazerImagens, current: 0 });
   const ruadolazerVisual = document.getElementById('ruadolazer-visual');
-  if (ruadolazerVisual) ruadolazerVisual.innerHTML = buildCarouselHTML(ruadolazerImagens, ruadolazerGalleryIndex, '');
+  if (ruadolazerVisual) ruadolazerVisual.innerHTML = buildCarouselHTML(ruadolazerImagens, ruadolazerGalleryIndex, '', "Rua do Lazer — Santa Teresa, ES");
 
 
   // ---- Giardino (carrossel real) ----
@@ -658,7 +678,7 @@ function gtag_report_conversion(url) {
   const giardinoGalleryIndex = galleries.length;
   galleries.push({ imagens: giardinoImagens, current: 0 });
   const giardinoVisual = document.getElementById('giardino-visual');
-  if (giardinoVisual) giardinoVisual.innerHTML = buildCarouselHTML(giardinoImagens, giardinoGalleryIndex, '');
+  if (giardinoVisual) giardinoVisual.innerHTML = buildCarouselHTML(giardinoImagens, giardinoGalleryIndex, '', "Giardino — Santa Teresa, ES");
 
   // ---- Cervejaria Três Santas (carrossel real) ----
   const tressantasImagens = [
@@ -668,7 +688,7 @@ function gtag_report_conversion(url) {
   const tressantasGalleryIndex = galleries.length;
   galleries.push({ imagens: tressantasImagens, current: 0 });
   const tressantasVisual = document.getElementById('tressantas-visual');
-  if (tressantasVisual) tressantasVisual.innerHTML = buildCarouselHTML(tressantasImagens, tressantasGalleryIndex, '');
+  if (tressantasVisual) tressantasVisual.innerHTML = buildCarouselHTML(tressantasImagens, tressantasGalleryIndex, '', "Cervejaria Três Santas — Santa Teresa, ES");
 
   // ---- Café Zanoni (carrossel real) ----
   const zanoniImagens = [
@@ -677,7 +697,7 @@ function gtag_report_conversion(url) {
   const zanoniGalleryIndex = galleries.length;
   galleries.push({ imagens: zanoniImagens, current: 0 });
   const zanoniVisual = document.getElementById('zanoni-visual');
-  if (zanoniVisual) zanoniVisual.innerHTML = buildCarouselHTML(zanoniImagens, zanoniGalleryIndex, '');
+  if (zanoniVisual) zanoniVisual.innerHTML = buildCarouselHTML(zanoniImagens, zanoniGalleryIndex, '', "Café Zanoni — Santa Teresa, ES");
 
   // ---- Gioconda Cantina Italiana (carrossel real) ----
   const giocondaImagens = [
@@ -686,7 +706,7 @@ function gtag_report_conversion(url) {
   const giocondaGalleryIndex = galleries.length;
   galleries.push({ imagens: giocondaImagens, current: 0 });
   const giocondaVisual = document.getElementById('gioconda-visual');
-  if (giocondaVisual) giocondaVisual.innerHTML = buildCarouselHTML(giocondaImagens, giocondaGalleryIndex, '');
+  if (giocondaVisual) giocondaVisual.innerHTML = buildCarouselHTML(giocondaImagens, giocondaGalleryIndex, '', "Gioconda Cantina Italiana — Santa Teresa, ES");
 
   // ---- Claid's Biscoitos (carrossel real) ----
   const claidsImagens = [
@@ -695,7 +715,7 @@ function gtag_report_conversion(url) {
   const claidsGalleryIndex = galleries.length;
   galleries.push({ imagens: claidsImagens, current: 0 });
   const claidsVisual = document.getElementById('claids-visual');
-  if (claidsVisual) claidsVisual.innerHTML = buildCarouselHTML(claidsImagens, claidsGalleryIndex, '');
+  if (claidsVisual) claidsVisual.innerHTML = buildCarouselHTML(claidsImagens, claidsGalleryIndex, '', "Claid's Biscoitos — Santa Teresa, ES");
 
   // ---- San Pietro Vila Parque (carrossel real) ----
   const sanpietroImagens = [
@@ -704,7 +724,7 @@ function gtag_report_conversion(url) {
   const sanpietroGalleryIndex = galleries.length;
   galleries.push({ imagens: sanpietroImagens, current: 0 });
   const sanpietroVisual = document.getElementById('sanpietro-visual');
-  if (sanpietroVisual) sanpietroVisual.innerHTML = buildCarouselHTML(sanpietroImagens, sanpietroGalleryIndex, '');
+  if (sanpietroVisual) sanpietroVisual.innerHTML = buildCarouselHTML(sanpietroImagens, sanpietroGalleryIndex, '', "San Pietro Vila Parque — Santa Teresa, ES");
   // ---- rampa (carrossel real) ----
   const rampaImagens = [
     "../img/rampa-1.jpg",
@@ -715,7 +735,7 @@ function gtag_report_conversion(url) {
   const rampaGalleryIndex = galleries.length;
   galleries.push({ imagens: rampaImagens, current: 0 });
   const rampaVisual = document.getElementById('rampa-visual');
-  if (rampaVisual) rampaVisual.innerHTML = buildCarouselHTML(rampaImagens, rampaGalleryIndex, '');
+  if (rampaVisual) rampaVisual.innerHTML = buildCarouselHTML(rampaImagens, rampaGalleryIndex, '', "Rampa de Voo Livre do Caravaggio — Santa Teresa, ES");
 
   // ---- villaggio (carrossel real) ----
   const villaggioImagens = [
@@ -726,7 +746,7 @@ function gtag_report_conversion(url) {
   const villaggioGalleryIndex = galleries.length;
   galleries.push({ imagens: villaggioImagens, current: 0 });
   const villaggioVisual = document.getElementById('villaggio-visual');
-  if (villaggioVisual) villaggioVisual.innerHTML = buildCarouselHTML(villaggioImagens, villaggioGalleryIndex, '');
+  if (villaggioVisual) villaggioVisual.innerHTML = buildCarouselHTML(villaggioImagens, villaggioGalleryIndex, '', "Villaggio Zamprogno — Santa Teresa, ES");
 
   // ---- cafehaus (carrossel real) ----
   const cafehausImagens = [
@@ -735,7 +755,7 @@ function gtag_report_conversion(url) {
   const cafehausGalleryIndex = galleries.length;
   galleries.push({ imagens: cafehausImagens, current: 0 });
   const cafehausVisual = document.getElementById('cafehaus-visual');
-  if (cafehausVisual) cafehausVisual.innerHTML = buildCarouselHTML(cafehausImagens, cafehausGalleryIndex, '');
+  if (cafehausVisual) cafehausVisual.innerHTML = buildCarouselHTML(cafehausImagens, cafehausGalleryIndex, '', "Restaurante Café Haus — Santa Teresa, ES");
 
   // ---- romanha (carrossel real) ----
   const romanhaImagens = [
@@ -745,7 +765,7 @@ function gtag_report_conversion(url) {
   const romanhaGalleryIndex = galleries.length;
   galleries.push({ imagens: romanhaImagens, current: 0 });
   const romanhaVisual = document.getElementById('romanha-visual');
-  if (romanhaVisual) romanhaVisual.innerHTML = buildCarouselHTML(romanhaImagens, romanhaGalleryIndex, '');
+  if (romanhaVisual) romanhaVisual.innerHTML = buildCarouselHTML(romanhaImagens, romanhaGalleryIndex, '', "Romanha — Santa Teresa, ES");
 
   // ---- redrock (carrossel real) ----
   const redrockImagens = [
@@ -755,7 +775,7 @@ function gtag_report_conversion(url) {
   const redrockGalleryIndex = galleries.length;
   galleries.push({ imagens: redrockImagens, current: 0 });
   const redrockVisual = document.getElementById('redrock-visual');
-  if (redrockVisual) redrockVisual.innerHTML = buildCarouselHTML(redrockImagens, redrockGalleryIndex, '');
+  if (redrockVisual) redrockVisual.innerHTML = buildCarouselHTML(redrockImagens, redrockGalleryIndex, '', "Red Rock — Santa Teresa, ES");
 
   // ---- espumantes (carrossel real) ----
   const espumantesImagens = [
@@ -764,7 +784,7 @@ function gtag_report_conversion(url) {
   const espumantesGalleryIndex = galleries.length;
   galleries.push({ imagens: espumantesImagens, current: 0 });
   const espumantesVisual = document.getElementById('espumantes-visual');
-  if (espumantesVisual) espumantesVisual.innerHTML = buildCarouselHTML(espumantesImagens, espumantesGalleryIndex, '');
+  if (espumantesVisual) espumantesVisual.innerHTML = buildCarouselHTML(espumantesImagens, espumantesGalleryIndex, '', "Casa dos Espumantes — Santa Teresa, ES");
 
   // ---- saboritaliano (carrossel real) ----
   const saboritalianoImagens = [
@@ -773,7 +793,7 @@ function gtag_report_conversion(url) {
   const saboritalianoGalleryIndex = galleries.length;
   galleries.push({ imagens: saboritalianoImagens, current: 0 });
   const saboritalianoVisual = document.getElementById('saboritaliano-visual');
-  if (saboritalianoVisual) saboritalianoVisual.innerHTML = buildCarouselHTML(saboritalianoImagens, saboritalianoGalleryIndex, '');
+  if (saboritalianoVisual) saboritalianoVisual.innerHTML = buildCarouselHTML(saboritalianoImagens, saboritalianoGalleryIndex, '', "Restaurante Sabor Italiano — Santa Teresa, ES");
 
   // ---- Sítio Canaã (carrossel real) ----
   const canaaImagens = [
@@ -782,7 +802,7 @@ function gtag_report_conversion(url) {
   const canaaGalleryIndex = galleries.length;
   galleries.push({ imagens: canaaImagens, current: 0 });
   const canaaVisual = document.getElementById('canaa-visual');
-  if (canaaVisual) canaaVisual.innerHTML = buildCarouselHTML(canaaImagens, canaaGalleryIndex, '');
+  if (canaaVisual) canaaVisual.innerHTML = buildCarouselHTML(canaaImagens, canaaGalleryIndex, '', "Sítio Canaã — Santa Teresa, ES");
 
 
   // ---- praca (carrossel real) ----
@@ -793,7 +813,7 @@ function gtag_report_conversion(url) {
   const pracaGalleryIndex = galleries.length;
   galleries.push({ imagens: pracaImagens, current: 0 });
   const pracaVisual = document.getElementById('praca-visual');
-  if (pracaVisual) pracaVisual.innerHTML = buildCarouselHTML(pracaImagens, pracaGalleryIndex, '');
+  if (pracaVisual) pracaVisual.innerHTML = buildCarouselHTML(pracaImagens, pracaGalleryIndex, '', "Praça Augusto Ruschi — Santa Teresa, ES");
 
   // ---- alpino (carrossel real) ----
   const alpinoImagens = [
@@ -803,7 +823,7 @@ function gtag_report_conversion(url) {
   const alpinoGalleryIndex = galleries.length;
   galleries.push({ imagens: alpinoImagens, current: 0 });
   const alpinoVisual = document.getElementById('alpino-visual');
-  if (alpinoVisual) alpinoVisual.innerHTML = buildCarouselHTML(alpinoImagens, alpinoGalleryIndex, '');
+  if (alpinoVisual) alpinoVisual.innerHTML = buildCarouselHTML(alpinoImagens, alpinoGalleryIndex, '', "AlpinoBeppo — Santa Teresa, ES");
 
   // ---- casa194 (carrossel real) ----
   const casa194Imagens = [
@@ -812,7 +832,7 @@ function gtag_report_conversion(url) {
   const casa194GalleryIndex = galleries.length;
   galleries.push({ imagens: casa194Imagens, current: 0 });
   const casa194Visual = document.getElementById('casa194-visual');
-  if (casa194Visual) casa194Visual.innerHTML = buildCarouselHTML(casa194Imagens, casa194GalleryIndex, '');
+  if (casa194Visual) casa194Visual.innerHTML = buildCarouselHTML(casa194Imagens, casa194GalleryIndex, '', "Casa 194 - Ristorante — Santa Teresa, ES");
 
 
   // ---- Armazém Caravaggio (carrossel real) ----
@@ -824,7 +844,7 @@ function gtag_report_conversion(url) {
   const armazemGalleryIndex = galleries.length;
   galleries.push({ imagens: armazemImagens, current: 0 });
   const armazemVisual = document.getElementById('armazem-visual');
-  if (armazemVisual) armazemVisual.innerHTML = buildCarouselHTML(armazemImagens, armazemGalleryIndex, '');
+  if (armazemVisual) armazemVisual.innerHTML = buildCarouselHTML(armazemImagens, armazemGalleryIndex, '', "Armazém Caravaggio — Santa Teresa, ES");
 
   // ---- W.O. Food, Drink and View (carrossel real) ----
   const woImagens = [
@@ -833,7 +853,7 @@ function gtag_report_conversion(url) {
   const woGalleryIndex = galleries.length;
   galleries.push({ imagens: woImagens, current: 0 });
   const woVisual = document.getElementById('wo-visual');
-  if (woVisual) woVisual.innerHTML = buildCarouselHTML(woImagens, woGalleryIndex, '');
+  if (woVisual) woVisual.innerHTML = buildCarouselHTML(woImagens, woGalleryIndex, '', "W.O. Food, Drink and View — Santa Teresa, ES");
 
 
   // ---- Museu de Biologia Mello Leitão (carrossel real) ----
@@ -848,7 +868,7 @@ function gtag_report_conversion(url) {
   const melloleitaoGalleryIndex = galleries.length;
   galleries.push({ imagens: melloleitaoImagens, current: 0 });
   const melloleitaoVisual = document.getElementById('melloleitao-visual');
-  if (melloleitaoVisual) melloleitaoVisual.innerHTML = buildCarouselHTML(melloleitaoImagens, melloleitaoGalleryIndex, '');
+  if (melloleitaoVisual) melloleitaoVisual.innerHTML = buildCarouselHTML(melloleitaoImagens, melloleitaoGalleryIndex, '', "Museu de Biologia Mello Leitão — Santa Teresa, ES");
 
 
   initCarousels();

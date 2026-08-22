@@ -53,6 +53,59 @@ function gtag_report_conversion(url) {
 <meta property="og:description" content="Terrenos residenciais e comerciais em Santa Teresa e no Circuito Caravaggio, Espírito Santo.">
 <meta property="og:url" content="https://millacamata.com.br/">
 <meta property="og:locale" content="pt_BR">
+<meta property="og:image" content="https://millacamata.com.br/img/og-home.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Terreno com vista para a mata no Circuito Caravaggio, Santa Teresa, ES">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "RealEstateAgent",
+      "@id": "https://millacamata.com.br/#corretora",
+      "name": "Milla Camata — Corretora de Imóveis",
+      "url": "https://millacamata.com.br/",
+      "image": "https://millacamata.com.br/img/milla-retrato.jpg",
+      "logo": "https://millacamata.com.br/icon-512.png",
+      "telephone": "+55-27-99609-2266",
+      "description": "Corretora de imóveis especializada em terrenos residenciais e comerciais em Santa Teresa e no Circuito Caravaggio, Espírito Santo. CRECI/ES 16375.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Santa Teresa",
+        "addressRegion": "ES",
+        "addressCountry": "BR"
+      },
+      "areaServed": [
+        { "@type": "Place", "name": "Santa Teresa, ES" },
+        { "@type": "Place", "name": "Circuito Caravaggio" },
+        { "@type": "Place", "name": "Circuito Colibri" }
+      ],
+      "knowsLanguage": "pt-BR",
+      "sameAs": ["https://www.instagram.com/millacamata_artistaecorretora/"]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://millacamata.com.br/#site",
+      "url": "https://millacamata.com.br/",
+      "name": "Milla Camata | Corretora de Imóveis",
+      "inLanguage": "pt-BR",
+      "publisher": { "@id": "https://millacamata.com.br/#corretora" }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://millacamata.com.br/#home",
+      "url": "https://millacamata.com.br/",
+      "name": "Terrenos em Santa Teresa e no Circuito Caravaggio",
+      "isPartOf": { "@id": "https://millacamata.com.br/#site" },
+      "about": { "@id": "https://millacamata.com.br/#corretora" },
+      "primaryImageOfPage": "https://millacamata.com.br/img/og-home.jpg",
+      "inLanguage": "pt-BR"
+    }
+  ]
+}
+</script>
 <link rel="preload" href="/fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="style.css">
 </head>
@@ -397,7 +450,7 @@ function gtag_report_conversion(url) {
       empDiv.insertAdjacentHTML('beforeend', `
         <div class="empreendimento" data-reveal>
           <div class="empreendimento-visual">
-            ${buildCarouselHTML(t.imagens, galleryIndex, '<span class="empreendimento-tag">Condomínio</span>')}
+            ${buildCarouselHTML(t.imagens, galleryIndex, '<span class="empreendimento-tag">Condomínio</span>', `${t.nome} — Santa Teresa, ES`)}
           </div>
           <div class="empreendimento-body">
             <div class="property-loc">${t.local}</div>
@@ -416,7 +469,7 @@ function gtag_report_conversion(url) {
       grid.insertAdjacentHTML('beforeend', `
         <div class="property" data-reveal>
           <div class="property-visual">
-            ${buildCarouselHTML(t.imagens, galleryIndex, '<span class="property-tag">à venda</span>')}
+            ${buildCarouselHTML(t.imagens, galleryIndex, '<span class="property-tag">à venda</span>', `${t.nome} — Santa Teresa, ES`)}
           </div>
           <div class="property-body">
             <div class="property-loc">${t.local}</div>
@@ -470,6 +523,100 @@ function gtag_report_conversion(url) {
     if (qtd) qtd.textContent = count;
     if (area && areas.length) area.textContent = `${fmtArea(Math.min(...areas))} a ${fmtArea(Math.max(...areas))}`;
     if (valor && valores.length) valor.textContent = `${fmtValor(Math.min(...valores))} a ${fmtValor(Math.max(...valores))}`;
+  })();
+
+  /* -------------------------------------------------------------------------
+     JSON-LD DOS IMOVEIS — gerado a partir do array `terrenos`, pelo mesmo
+     motivo dos numeros do dossier: dado duplicado na mao desatualiza calado.
+     Serve sobretudo para associar cada foto ao imovel que ela mostra. Os
+     slides 2+ nascem com data-src e sem src, entao nao existem para o
+     rastreador; aqui e no sitemap de imagens sao os dois unicos lugares em
+     que o Google ve o album inteiro.
+     ------------------------------------------------------------------------- */
+  (function jsonLdImoveis(){
+    const BASE = 'https://millacamata.com.br/';
+    const abs = p => BASE + String(p).replace(/^\.?\//, '');
+    // Mesmo parser do dossier: le apenas o PRIMEIRO numero do texto.
+    const num = txt => {
+      const m = String(txt).match(/[\d.,]+/);
+      return m ? Number(m[0].replace(/\./g,'').replace(',','.')) || 0 : 0;
+    };
+    const fotos = t => (t.imagens || [])
+      .filter(i => typeof i === 'string')
+      .map(abs);
+    const endereco = {
+      "@type": "PostalAddress",
+      "addressLocality": "Santa Teresa",
+      "addressRegion": "ES",
+      "addressCountry": "BR"
+    };
+
+    const itens = [];
+    terrenos.filter(t => t.disponivel).forEach(t => {
+      const slug = t.nome.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+                     .replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'');
+      const ehCondominio = t.tipo === 'empreendimento';
+      const descricao = ehCondominio
+        ? t.descricao
+        : `${t.area} — ${(t.destaques || []).join('. ')}.`;
+
+      const oferta = ehCondominio
+        ? {
+            "@type": "AggregateOffer",
+            "priceCurrency": "BRL",
+            "offerCount": (t.lotes || []).length,
+            "lowPrice": Math.min(...(t.lotes || []).map(l => num(l.valor) * (/mil/i.test(l.valor) ? 1000 : 1))),
+            "highPrice": Math.max(...(t.lotes || []).map(l => num(l.valor) * (/mil/i.test(l.valor) ? 1000 : 1))),
+            "seller": { "@id": BASE + "#corretora" }
+          }
+        : {
+            "@type": "Offer",
+            "price": num(t.valor),
+            "priceCurrency": "BRL",
+            "availability": "https://schema.org/InStock",
+            "seller": { "@id": BASE + "#corretora" },
+            "itemOffered": {
+              "@type": "Place",
+              "name": t.nome,
+              "address": endereco,
+              "additionalProperty": {
+                "@type": "PropertyValue",
+                "name": "Área do terreno",
+                "value": t.area,
+                "unitCode": "MTK"
+              }
+            }
+          };
+
+      itens.push({
+        "@type": "ListItem",
+        "position": itens.length + 1,
+        "item": {
+          "@type": "RealEstateListing",
+          "@id": `${BASE}#imovel-${slug}`,
+          "url": `${BASE}#terrenos`,
+          "name": t.nome,
+          "description": descricao,
+          "image": fotos(t),
+          "inLanguage": "pt-BR",
+          "provider": { "@id": BASE + "#corretora" },
+          "contentLocation": { "@type": "Place", "name": t.local, "address": endereco },
+          "mainEntity": oferta
+        }
+      });
+    });
+
+    const el = document.createElement('script');
+    el.type = 'application/ld+json';
+    el.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "@id": BASE + "#imoveis",
+      "name": "Imóveis à venda — Milla Camata",
+      "numberOfItems": itens.length,
+      "itemListElement": itens
+    });
+    document.head.appendChild(el);
   })();
 
   initCarousels();

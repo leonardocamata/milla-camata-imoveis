@@ -3,7 +3,7 @@
 Documento de referência para manutenção. **Leia a seção "Imagens" antes de
 adicionar qualquer terreno ou card de turismo novo.**
 
-Última atualização: 11 de agosto de 2026 (migração das imagens para arquivos).
+Última atualização: 22 de agosto de 2026 (alt, JSON-LD, og:image e sitemap de imagens).
 
 ---
 
@@ -153,6 +153,22 @@ O CSS depende de `flex:0 0 100%` em `.carousel-track img`, então uma `<img>` se
 **Se você mexer em `buildCarouselHTML`, mantenha o `data-idx="${i}"`** — é por
 ele que `primeSlides` encontra cada slide.
 
+### Texto alternativo (`alt`)
+
+`buildCarouselHTML(imagens, galleryIndex, extraTag, altBase)` — o **quarto**
+argumento é obrigatório na prática. Ele vira o `alt` de toda foto do álbum,
+numerado: `"<altBase> — foto 3 de 7"`. Sem ele o `alt` sai vazio.
+
+- `index.html` passa `` `${t.nome} — Santa Teresa, ES` ``.
+- `turismo/index.html` passa o texto de `.turismo-title` do card + `, ES`.
+
+Mantenha em torno de 60–70 caracteres. O `local` do terreno chegava a 130 e
+repetia o nome do ponto de referência — isso lê como keyword stuffing e foi
+descartado de propósito.
+
+O lightbox copia o `alt` do slide de origem, então não precisa de tratamento
+separado.
+
 ---
 
 ## Vídeos
@@ -295,6 +311,62 @@ cinco páginas, logo abaixo do `config` do Ads. Ao criar página nova, copiar o
 
 ---
 
+## SEO de imagem, dados estruturados e sitemap
+
+Adicionado em 22/08/2026. Motivo: nenhuma foto do site tinha `alt`, a home não
+tinha JSON-LD nem `og:image`, e o sitemap não declarava imagem alguma.
+
+**O problema central:** os slides 2+ nascem com `data-src` e **sem `src`**. Isso
+é ótimo para performance e péssimo para descoberta — o rastreador do Google
+nunca chega neles navegando a página. As fotos do slide 2 em diante só existem
+para o Google em **dois** lugares: o `image[]` do JSON-LD e o sitemap de
+imagens. Se um dos dois sair do ar, aquelas fotos somem da busca.
+
+### JSON-LD
+
+| Bloco | Onde | Como |
+|---|---|---|
+| `RealEstateAgent` + `WebSite` + `WebPage` | `<head>` do `index.html` | estático — não muda |
+| `ItemList` de `RealEstateListing` | fim do script do `index.html` | **gerado do array `terrenos`** em tempo de execução |
+| `CollectionPage` | `<head>` do `turismo/index.html` | estático |
+
+O bloco dos imóveis é gerado por JS pelo mesmo motivo dos números do dossier:
+dado duplicado na mão desatualiza calado. O Google renderiza JS e lê JSON-LD
+injetado no DOM. A contrapartida é que depende de renderização — se algum dia o
+array virar arquivo JSON separado, vale reavaliar.
+
+Todo terreno vira um `RealEstateListing` com `@id` derivado do slug do nome,
+`image[]` com o álbum completo e `mainEntity` com a oferta (`Offer` com preço, ou
+`AggregateOffer` com faixa, no caso do condomínio). `provider` aponta para
+`#corretora`.
+
+**Não existe rich result de imóvel na busca do Google.** Esse JSON-LD serve para
+associar foto ↔ imóvel e para o Google entender a entidade, não para gerar um
+card especial no resultado.
+
+### `og:image`
+
+`index.html` → `img/og-home.jpg`; `turismo/` → `img/og-turismo.jpg`; artigos →
+`blog/img/og-<slug>.jpg`. Sempre **1200×630**, gerados por corte central a
+partir de uma foto do próprio site, qualidade 82 (não entram no peso da página,
+então não seguem o `quality=68` das fotos normais).
+
+**Pendência:** `br-101-duplicacao-santa-teresa.html` e
+`santa-teresa-ou-pedra-azul.html` não têm foto nenhuma e por isso ficaram sem
+`og:image`. Compartilhados no WhatsApp, vão sem preview.
+
+### Sitemap de imagens
+
+`sitemap.xml` usa a extensão `xmlns:image` do Google. **Não edite na mão** —
+rode `python3 tools/gerar-sitemap.py`, que varre os HTML, confere se cada
+referência existe em disco e regrava o arquivo. Rode sempre que entrar foto
+nova. O Google ignora `<image:title>` e `<image:caption>` desde 2022; a
+descrição da foto vem do `alt`, por isso o script só emite `<image:loc>`.
+
+Depois de publicar, reenviar o sitemap no Search Console acelera o rastreio.
+
+---
+
 ## Checklist antes de cada commit
 
 1. **Validar o JS**: extrair cada bloco `<script>` (excluindo
@@ -302,7 +374,11 @@ cinco páginas, logo abaixo do `config` do Ads. Ao criar página nova, copiar o
 2. **Validar o JSON-LD** com `json.loads`.
 3. **Conferir referências de imagem**: toda string `img/...` citada no HTML
    precisa existir em disco.
-4. **Renderizar num navegador de verdade** (Playwright) e conferir: nenhum erro
+4. **Se entrou ou saiu foto**: rodar `python3 tools/gerar-sitemap.py` e conferir
+   que nenhuma foto do carrossel ficou com `alt` vazio no navegador
+   (`document.querySelectorAll('.carousel img:not([alt]), .carousel img[alt=""]')`
+   tem que voltar zero).
+5. **Renderizar num navegador de verdade** (Playwright) e conferir: nenhum erro
    de JS no console, contagem de cards correta, e o slide visível de cada
    carrossel efetivamente carregado depois de navegar.
-5. Push para `origin main`; o GitHub Pages leva um ou dois minutos.
+6. Push para `origin main`; o GitHub Pages leva um ou dois minutos.

@@ -12,11 +12,22 @@
      ========================================================================= */
   const galleries = []; // galleries[galleryIndex] = { imagens: [...], current: 0 }
 
-  function buildCarouselHTML(imagens, galleryIndex, extraTag){
+  // Escapa texto que vai para dentro de um atributo HTML.
+  function escAttr(s){
+    return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  // altBase e o nome do imovel ou do lugar; vira o alt de cada foto do album,
+  // numerado. Sem ele o Google nao tem nenhuma pista do que a foto mostra.
+  function buildCarouselHTML(imagens, galleryIndex, extraTag, altBase){
+    const total = imagens.length;
+    const altDe = (i) => altBase
+      ? escAttr(total > 1 ? `${altBase} — foto ${i + 1} de ${total}` : altBase)
+      : '';
     const slides = imagens.map((item, i) => {
       if (item && typeof item === 'object' && item.video) {
         return `<div class="video-slide" data-idx="${i}">
-          <video data-src="${item.video}" poster="${item.poster || ''}" muted loop autoplay playsinline preload="none"></video>
+          <video data-src="${item.video}" poster="${item.poster || ''}" ${altBase ? `title="${escAttr(`Vídeo — ${altBase}`)}" aria-label="${escAttr(`Vídeo — ${altBase}`)}"` : ''} muted loop autoplay playsinline preload="none"></video>
           <span class="video-badge">🔇 vídeo</span>
         </div>`;
       }
@@ -24,8 +35,8 @@
       // foto e baixada, conforme o card entra ou nao na tela). Os demais ficam
       // em data-src e sao carregados sob demanda por primeSlides().
       return i === 0
-        ? `<img src="${item}" alt="" data-idx="${i}" loading="lazy" decoding="async">`
-        : `<img data-src="${item}" alt="" data-idx="${i}" decoding="async">`;
+        ? `<img src="${item}" alt="${altDe(i)}" data-idx="${i}" loading="lazy" decoding="async">`
+        : `<img data-src="${item}" alt="${altDe(i)}" data-idx="${i}" decoding="async">`;
     }).join('');
     const dots = imagens.length > 1
       ? `<div class="carousel-dots">${imagens.map((_, i) => `<span class="${i===0?'active':''}"></span>`).join('')}</div>`
@@ -138,6 +149,10 @@
       lightboxVideo.style.display = 'none';
       lightboxImg.style.display = 'block';
       lightboxImg.src = item;
+      // Reaproveita o alt ja montado no slide do carrossel, para o lightbox
+      // nao ser uma imagem sem descricao.
+      const slideOrigem = document.querySelector(`[data-gallery-track="${galleryIndex}"] img[data-idx="${g.current}"]`);
+      lightboxImg.alt = slideOrigem ? slideOrigem.alt : '';
       primeSlides(galleryIndex, true);
     }
     lightboxCaption.textContent = g.imagens.length > 1 ? `${g.current + 1} de ${g.imagens.length}` : '';

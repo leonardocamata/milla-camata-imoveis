@@ -210,6 +210,17 @@ tela** — pausar interrompe o buffer, senão quem só rola a página acaba baix
 o vídeo inteiro sem parar para assistir. O `primeSlides()` faz o mesmo controle
 ao navegar entre slides.
 
+**Áudio:** os mp4 devem ser gravados **com** a trilha de áudio (AAC 96k).
+Reencodar sem áudio economiza uns 500 KB por vídeo, mas tira o som do lightbox —
+foi um erro cometido em 16/08/2026 e desfeito em 17/08.
+
+Onde o som toca: **no card, nunca**. Navegadores bloqueiam autoplay com áudio, e
+o slide do carrossel depende de `muted` + `autoplay` para tocar sozinho — tirar o
+`muted` faz o vídeo simplesmente não iniciar. **No lightbox, sim**: ele é aberto
+por um toque do usuário, o que libera o áudio, e o `carousel.js` já faz
+`lightboxVideo.muted = false` com `controls` no elemento. O selo do card diz
+"🔇 toque para ouvir" justamente para levar a pessoa até lá.
+
 **Cuidado ao testar vídeo com Playwright:** o Chromium headless não traz o codec
 H.264, então todo mp4 falha com `DEMUXER_ERROR_NO_SUPPORTED_STREAMS` e nunca
 toca. Isso é limitação do ambiente de teste, não bug do site. Para conferir a

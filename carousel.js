@@ -28,7 +28,7 @@
       if (item && typeof item === 'object' && item.video) {
         return `<div class="video-slide" data-idx="${i}">
           <video data-src="${item.video}" poster="${item.poster || ''}" ${altBase ? `title="${escAttr(`Vídeo — ${altBase}`)}" aria-label="${escAttr(`Vídeo — ${altBase}`)}"` : ''} muted loop autoplay playsinline preload="none"></video>
-          <span class="video-badge">🔇 vídeo</span>
+          <span class="video-badge">🔇 toque para ouvir</span>
         </div>`;
       }
       // Apenas o primeiro slide nasce com src (o loading=lazy decide se a

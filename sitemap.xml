@@ -417,13 +417,13 @@
   </url>
   <url>
     <loc>https://millacamata.com.br/blog/br-101-duplicacao-santa-teresa.html</loc>
-    <lastmod>2026-08-22</lastmod>
+    <lastmod>2026-08-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://millacamata.com.br/blog/brejo-virou-lago-potencial-do-terreno.html</loc>
-    <lastmod>2026-08-22</lastmod>
+    <lastmod>2026-08-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -434,8 +434,32 @@
     </image:image>
   </url>
   <url>
+    <loc>https://millacamata.com.br/blog/clima-de-santa-teresa.html</loc>
+    <lastmod>2026-09-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://millacamata.com.br/blog/img/clima-neblina-amanhecer.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://millacamata.com.br/blog/img/clima-termometro-casa.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://millacamata.com.br/blog/img/clima-termometro-praca.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://millacamata.com.br/blog/img/clima-ta-frio.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://millacamata.com.br/blog/img/clima-fogueira.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://millacamata.com.br/blog/img/clima-nuvens-vale.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
     <loc>https://millacamata.com.br/blog/rua-do-lazer-santa-teresa.html</loc>
-    <lastmod>2026-08-22</lastmod>
+    <lastmod>2026-08-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -452,14 +476,35 @@
     </image:image>
   </url>
   <url>
-    <loc>https://millacamata.com.br/blog/santa-teresa-ou-pedra-azul.html</loc>
-    <lastmod>2026-08-22</lastmod>
+    <loc>https://millacamata.com.br/blog/santa-teresa-e-o-caravaggio.html</loc>
+    <lastmod>2026-09-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://millacamata.com.br/blog/img/casa-lambert.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://millacamata.com.br/blog/img/capela-conceicao.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://millacamata.com.br/blog/img/igrejinha-anoitecer.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://millacamata.com.br/blog/img/festa-caravaggio.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://millacamata.com.br/blog/img/caminhos-caravaggio.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://millacamata.com.br/blog/img/armazem-caravaggio.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://millacamata.com.br/blog/img/amor-mora-aqui.jpg</image:loc>
+    </image:image>
   </url>
   <url>
-    <loc>https://millacamata.com.br/blog/santa-teresa-e-o-caravaggio.html</loc>
-    <lastmod>2026-08-22</lastmod>
+    <loc>https://millacamata.com.br/blog/santa-teresa-ou-pedra-azul.html</loc>
+    <lastmod>2026-08-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

@@ -435,7 +435,7 @@
   </url>
   <url>
     <loc>https://millacamata.com.br/blog/clima-de-santa-teresa.html</loc>
-    <lastmod>2026-09-06</lastmod>
+    <lastmod>2026-09-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -513,5 +513,23 @@
     <lastmod>2026-08-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://millacamata.com.br/blog/tres-santas-tricampea-brasil-beer-cup.html</loc>
+    <lastmod>2026-09-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://millacamata.com.br/blog/img/tres-santas-fachada.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://millacamata.com.br/blog/img/tres-santas-balcao.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://millacamata.com.br/blog/img/tres-santas-barril.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://millacamata.com.br/blog/img/tres-santas-noite.jpg</image:loc>
+    </image:image>
   </url>
 </urlset>

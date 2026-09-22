@@ -416,14 +416,32 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://millacamata.com.br/blog/abelhas-sem-ferrao-santa-teresa.html</loc>
+    <lastmod>2026-09-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://millacamata.com.br/blog/img/abelhas-caixa-meliponario.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://millacamata.com.br/blog/img/abelhas-urucu-amarela-entrada.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://millacamata.com.br/blog/img/abelhas-urucu-amarela-close.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://millacamata.com.br/blog/img/abelhas-mel-copo.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
     <loc>https://millacamata.com.br/blog/br-101-duplicacao-santa-teresa.html</loc>
-    <lastmod>2026-08-30</lastmod>
+    <lastmod>2026-09-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://millacamata.com.br/blog/brejo-virou-lago-potencial-do-terreno.html</loc>
-    <lastmod>2026-08-30</lastmod>
+    <lastmod>2026-09-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -435,7 +453,7 @@
   </url>
   <url>
     <loc>https://millacamata.com.br/blog/clima-de-santa-teresa.html</loc>
-    <lastmod>2026-09-13</lastmod>
+    <lastmod>2026-09-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -459,7 +477,7 @@
   </url>
   <url>
     <loc>https://millacamata.com.br/blog/rua-do-lazer-santa-teresa.html</loc>
-    <lastmod>2026-08-30</lastmod>
+    <lastmod>2026-09-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -477,7 +495,7 @@
   </url>
   <url>
     <loc>https://millacamata.com.br/blog/santa-teresa-e-o-caravaggio.html</loc>
-    <lastmod>2026-09-09</lastmod>
+    <lastmod>2026-09-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -510,13 +528,13 @@
   </url>
   <url>
     <loc>https://millacamata.com.br/blog/santa-teresa-ou-pedra-azul.html</loc>
-    <lastmod>2026-08-30</lastmod>
+    <lastmod>2026-09-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://millacamata.com.br/blog/tres-santas-tricampea-brasil-beer-cup.html</loc>
-    <lastmod>2026-09-13</lastmod>
+    <lastmod>2026-09-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>

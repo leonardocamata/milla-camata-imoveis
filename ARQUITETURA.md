@@ -53,11 +53,18 @@ mude na outra. Marcação canônica (ajuste os `../` conforme a pasta):
       <a href="../turismo/index.html">Turismo</a>
       <a href="index.html" style="color:var(--gold);">Caderno de Campo</a>
       <a href="https://www.instagram.com/millacamata_artistaecorretora/" target="_blank" rel="noopener" class="ig-link nav-ig">...Instagram</a>
-      <a href="../index.html#contato" class="nav-cta">Falar no WhatsApp</a>
+      <a href="https://wa.me/5527996092266?text=..." class="nav-cta" target="_blank" rel="noopener" onclick="gtag_report_conversion();">Falar no WhatsApp</a>
     </div>
   </nav>
 </header>
 ```
+
+**O botão `.nav-cta` abre o WhatsApp direto** (desde 01/11/2026), nunca aponta
+para `#contato`: o rótulo promete WhatsApp, e o desvio custava um clique extra e
+a conversão no Google Ads (o link antigo não chamava `gtag_report_conversion()`).
+Em artigos, use a **mesma URL `wa.me` do botão de CTA do próprio artigo**, para a
+mensagem citar o texto lido. Na home, mesma mensagem do `#hero-whats`; no índice
+do blog e no turismo, mensagens próprias da página.
 
 São sempre os mesmos seis itens, na mesma ordem. O `style="color:var(--gold);"`
 marca a página atual e vai em **um** item só. A classe é `navlinks`, sem hífen —

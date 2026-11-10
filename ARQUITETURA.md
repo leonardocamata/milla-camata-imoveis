@@ -13,7 +13,7 @@ adicionar qualquer terreno ou card de turismo novo.**
 index.html                  home: hero, sobre, região, terrenos, explore, contato
 style.css                   CSS compartilhado por index.html e turismo/
 carousel.js                 motor de carrossel + lightbox (compartilhado)
-turismo/index.html          página de turismo (42 cards, 24 carrosséis)
+turismo/index.html          página de turismo (43 cards, 25 carrosséis)
 img/                        TODAS as fotos de index.html e turismo/
 videos/                     vídeos dos carrosséis + posters
 blog/index.html             lista do Caderno de Campo
